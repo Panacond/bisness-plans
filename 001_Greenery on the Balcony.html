@@ -1,18 +1,19 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Бизнес-план: Выращивание Зелени на Балконе в Одессе</title>
+    <title>Сворачивающийся Текст с двумя кнопками</title>
     <style>
-        /* Базовые стили для десктопных экранов */
         body {
             font-family: Arial, sans-serif;
             margin: 20px;
             padding: 0;
             background-color: #f4f4f4;
             color: #333;
-            font-size: 16px; /* Базовый размер текста */
+            font-size: 16px;
+            /* Базовый размер текста */
             line-height: 1.6;
         }
 
@@ -26,20 +27,23 @@
         }
 
         h1 {
-            font-size: 32px; /* Базовый размер H1 */
+            font-size: 32px;
+            /* Базовый размер H1 */
             color: #2c3e50;
             margin-bottom: 20px;
         }
 
         h2 {
-            font-size: 28px; /* Базовый размер H2 */
+            font-size: 28px;
+            /* Базовый размер H2 */
             color: #2c3e50;
             margin-top: 30px;
             margin-bottom: 15px;
         }
 
         h3 {
-            font-size: 24px; /* Базовый размер H3 */
+            font-size: 24px;
+            /* Базовый размер H3 */
             color: #2c3e50;
             margin-top: 25px;
             margin-bottom: 10px;
@@ -49,7 +53,8 @@
             margin-bottom: 15px;
         }
 
-        ul, ol {
+        ul,
+        ol {
             margin-bottom: 15px;
             padding-left: 20px;
         }
@@ -63,10 +68,12 @@
             border-collapse: collapse;
             margin-top: 20px;
             margin-bottom: 30px;
-            font-size: 16px; /* Базовый размер текста в таблицах */
+            font-size: 16px;
+            /* Базовый размер текста в таблицах */
         }
 
-        table th, table td {
+        table th,
+        table td {
             border: 1px solid #ddd;
             padding: 10px;
             text-align: left;
@@ -91,7 +98,8 @@
         /* --- Медиа-запросы для адаптивного дизайна --- */
         @media screen and (max-width: 768px) {
             body {
-                font-size: 18px; /* Крупнее для мобильных */
+                font-size: 18px;
+                /* Крупнее для мобильных */
             }
 
             .container {
@@ -100,23 +108,30 @@
             }
 
             h1 {
-                font-size: 36px; /* Крупнее заголовки H1 */
+                font-size: 36px;
+                /* Крупнее заголовки H1 */
             }
 
             h2 {
-                font-size: 30px; /* Крупнее заголовки H2 */
+                font-size: 30px;
+                /* Крупнее заголовки H2 */
             }
 
             h3 {
-                font-size: 26px; /* Крупнее заголовки H3 */
+                font-size: 26px;
+                /* Крупнее заголовки H3 */
             }
 
             table {
-                font-size: 18px; /* Крупнее текст в таблицах */
-                display: block; /* Позволяет таблице вести себя как блочный элемент */
+                font-size: 18px;
+                /* Крупнее текст в таблицах */
+                display: block;
+                /* Позволяет таблице вести себя как блочный элемент */
                 width: 100%;
-                overflow-x: auto; /* Добавляет горизонтальную прокрутку, если таблица слишком широкая */
-                -webkit-overflow-scrolling: touch; /* Улучшает прокрутку на iOS */
+                overflow-x: auto;
+                /* Добавляет горизонтальную прокрутку, если таблица слишком широкая */
+                -webkit-overflow-scrolling: touch;
+                /* Улучшает прокрутку на iOS */
             }
 
             /* Для улучшения читаемости таблиц на мобильных:
@@ -124,125 +139,620 @@
             table thead {
                 display: none;
             }
-            table, tbody, th, td, tr {
+
+            table,
+            tbody,
+            th,
+            td,
+            tr {
                 display: block;
             }
+
             table tr {
                 margin-bottom: 15px;
                 border: 1px solid #ccc;
                 padding: 10px;
                 border-radius: 5px;
             }
+
             table td {
                 border: none;
                 border-bottom: 1px solid #eee;
                 position: relative;
-                padding-left: 50%; /* Место для метки */
+                padding-left: 50%;
+                /* Место для метки */
                 text-align: right;
             }
+
             table td:before {
                 position: absolute;
                 left: 6px;
-                content: attr(data-label); /* Использует атрибут data-label из HTML */
+                content: attr(data-label);
+                /* Использует атрибут data-label из HTML */
                 font-weight: bold;
                 text-align: left;
-                width: 45%; /* Ширина для метки */
+                width: 45%;
+                /* Ширина для метки */
             }
+
             table td:last-child {
                 border-bottom: 0;
             }
+
             table tr.total-row td {
-                 text-align: right; /* Суммы выравниваем по правому краю */
-                 padding-left: 6px; /* Убираем отступ для метки для строк суммы */
+                text-align: right;
+                /* Суммы выравниваем по правому краю */
+                padding-left: 6px;
+                /* Убираем отступ для метки для строк суммы */
             }
-             table tr.total-row td:before {
-                content: ''; /* Скрываем метку для строки с суммой */
+
+            table tr.total-row td:before {
+                content: "";
+                /* Скрываем метку для строки с суммой */
             }
+        }
+
+        .collapsible-section {
+            margin-bottom: 25px;
+            /* Отступ между секциями */
+        }
+
+        .collapsible-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #e2e6ea;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 0;
+            /* Отступ от блока текста убран */
+        }
+
+        .collapsible-header:hover {
+            background-color: #d1ecf1;
+        }
+
+        .collapsible-header-text {
+            flex-grow: 1;
+            /* Позволяет тексту занимать доступное пространство */
+        }
+
+        /* Стиль для кнопки-стрелки */
+        .collapsible-arrow-button {
+            background: none;
+            border: none;
+            font-size: 20px;
+            cursor: pointer;
+            color: #2c3e50;
+            padding: 0;
+            margin-left: 10px;
+            /* Отступ от текста заголовка */
+            line-height: 1;
+            /* Убрать лишний отступ */
+        }
+
+        .collapsible-content {
+            max-height: 0;
+            /* Изначально скрыто */
+            overflow: hidden;
+            transition: max-height 0.3s ease-out, padding-top 0.3s ease-out;
+            /* Плавное открытие/закрытие */
+            padding: 0 15px;
+            /* Отступы внутри содержимого */
+            background-color: #f9f9f9;
+            border-bottom-left-radius: 5px;
+            border-bottom-right-radius: 5px;
+            border: 1px solid #e2e6ea;
+            border-top: none;
+            /* Убираем верхнюю границу, чтобы сливалось с заголовком */
+        }
+
+        .collapsible-content.expanded {
+            max-height: 10000px;
+            /* Достаточно большое значение для "развернуто" */
+            transition: max-height 0.5s ease-in, padding-top 0.5s ease-in;
+            /* Плавное открытие */
+            padding-top: 15px;
+            /* Отступ сверху при развернутом */
+            padding-bottom: 15px;
+            /* Отступ снизу развернутого текста */
+        }
+
+        .collapsible-content p {
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+
+        /* Стиль для нижней кнопки "Свернуть" */
+        .bottom-collapse-button {
+            text-align: center;
+            margin-top: 15px;
+            /* Отступ от текста выше */
+            /* Кнопка изначально будет скрыта, её видимость управляется JS */
+            display: none;
+        }
+
+        .bottom-collapse-button button {
+            background-color: #dc3545;
+            /* Красный цвет для кнопки "Свернуть" */
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background-color 0.2s;
+        }
+
+        .bottom-collapse-button button:hover {
+            background-color: #c82333;
         }
     </style>
 </head>
+
 <body>
+
     <div class="container">
-        <h1>Бизнес-план: Выращивание Зелени на Балконе в Одессе</h1>
-        <p>Этот бизнес-план предназначен для тех, кто хочет начать небольшой бизнес по выращиванию свежей зелени на балконе в условиях городской квартиры в Одессе. Он будет сфокусирован на микрозелени и быстрорастущих травах из-за их высокой рентабельности и короткого цикла роста.</p>
+        <h2>Сворачивающийся текст со стрелкой и нижней кнопкой</h2>
 
-        <h2>1. Резюме Проекта</h2>
-        <p><strong>Цель:</strong> Создание прибыльного микробизнеса по выращиванию и продаже свежей, экологически чистой зелени жителям Одессы, используя ограниченное пространство балкона.</p>
-        <p><strong>Продукт:</strong> Микрозелень (редис, брокколи, горох, подсолнечник), салат (латук, руккола), укроп, петрушка, базилик.</p>
-        <p><strong>Целевая аудитория:</strong> Частные лица (любители здорового питания, семьи с детьми), местные кафе и рестораны, магазины здорового питания.</p>
-        <p><strong>Преимущества:</strong> Свежесть, местное производство, экологичность, быстрый оборот, низкие стартовые инвестиции.</p>
-        <p><strong>Локация:</strong> Балкон городской квартиры в Одессе.</p>
+        <div class="collapsible-section">
+            <div class="collapsible-header" onclick="toggleContent(this)">
+                <span class="collapsible-header-text">Бизнес-план: Общее описание</span>
+                <button class="collapsible-arrow-button" aria-expanded="false">&#x25BC;</button>
+            </div>
+            <div class="collapsible-content">
+                <div class="text">
+                    <h1>Бизнес-план: Выращивание Зелени на Балконе</h1>
+                    <p>
+                        Этот бизнес-план предназначен для тех, кто хочет начать небольшой бизнес
+                        по выращиванию свежей зелени на балконе в условиях городской квартиры в
+                        Одессе. Он будет сфокусирован на микрозелени и быстрорастущих травах
+                        из-за их высокой рентабельности и короткого цикла роста.
+                    </p>
 
-        <h2>2. Описание Продукта и Услуг</h2>
-        <p>Мы будем предлагать широкий ассортимент свежей зелени, выращенной без использования химикатов и пестицидов. Основное внимание будет уделяться:</p>
-        <ul>
-            <li><strong>Микрозелени:</strong> Это молодые всходы растений, собранные на стадии первых настоящих листьев. Они очень питательны и популярны. Примеры:
-                <ul>
-                    <li>Редис: острый вкус, быстро растет (5-7 дней).</li>
-                    <li>Брокколи: мягкий вкус, очень полезная (7-10 дней).</li>
-                    <li>Горох: сладкий, хрустящий, большой урожай (10-14 дней).</li>
-                    <li>Подсолнечник: ореховый вкус, питательный (7-10 дней).</li>
-                </ul>
-            </li>
-            <li>И другим быстрорастущим травам (салат, укроп, петрушка, базилик).</li>
-        </ul>
+                    <h2>1. Резюме Проекта</h2>
+                    <p>
+                        <strong>Цель:</strong> Создание прибыльного микробизнеса по выращиванию
+                        и продаже свежей, экологически чистой зелени жителям Одессы, используя
+                        ограниченное пространство балкона.
+                    </p>
+                    <p>
+                        <strong>Продукт:</strong> Микрозелень (редис, брокколи, горох,
+                        подсолнечник), салат (латук, руккола), укроп, петрушка, базилик.
+                    </p>
+                    <p>
+                        <strong>Целевая аудитория:</strong> Частные лица (любители здорового
+                        питания, семьи с детьми), местные кафе и рестораны, магазины здорового
+                        питания.
+                    </p>
+                    <p>
+                        <strong>Преимущества:</strong> Свежесть, местное производство,
+                        экологичность, быстрый оборот, низкие стартовые инвестиции.
+                    </p>
+                    <p><strong>Локация:</strong> Балкон городской квартиры в Одессе.</p>
 
-        ---
+                    <h2>2. Описание Продукта и Услуг</h2>
+                    <p>
+                        Мы будем предлагать широкий ассортимент свежей зелени, выращенной без
+                        использования химикатов и пестицидов. Основное внимание будет уделяться:
+                    </p>
+                    <ul>
+                        <li>
+                            <strong>Микрозелени:</strong> Это молодые всходы растений, собранные
+                            на стадии первых настоящих листьев. Они очень питательны и популярны.
+                            Примеры:
+                            <ul>
+                                <li>Редис: острый вкус, быстро растет (5-7 дней).</li>
+                                <li>Брокколи: мягкий вкус, очень полезная (7-10 дней).</li>
+                                <li>Горох: сладкий, хрустящий, большой урожай (10-14 дней).</li>
+                                <li>Подсолнечник: ореховый вкус, питательный (7-10 дней).</li>
+                            </ul>
+                        </li>
+                        <li>
+                            Салатные культуры:
+                            <ul>
+                                <li>Руккола: пикантный вкус, быстро растет.</li>
+                                <li>Латук (листовой): нежный вкус.</li>
+                            </ul>
+                        </li>
+                        <li>
+                            Быстрорастущие травы:
+                            <ul>
+                                <li>Укроп: ароматный, популярен в украинской кухне.</li>
+                                <li>Петрушка: универсальная трава.</li>
+                                <li>Базилик: несколько сортов для разнообразия.</li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <p>
+                        <strong>Упаковка:</strong> Зелень будет продаваться в свежем виде, в
+                        прозрачных контейнерах или пакетах, обеспечивающих сохранность и
+                        привлекательный вид. Возможно, брендирование простой этикеткой.
+                    </p>
 
-        <h2>Таблицы с данными о затратах и доходах</h2>
+                    <h2>3. Анализ Рынка</h2>
+                    <h3>Потребители:</h3>
+                    <p>
+                        В Одессе растет спрос на здоровое питание и свежие, натуральные
+                        продукты. Целевые группы:
+                    </p>
+                    <ul>
+                        <li>
+                            Частные потребители: люди, заботящиеся о своем здоровье, спортсмены,
+                            вегетарианцы, семьи с детьми, которые хотят покупать свежую зелень
+                            напрямую от производителя.
+                        </li>
+                        <li>
+                            Кафе и рестораны: особенно те, что специализируются на здоровой,
+                            вегетарианской или авторской кухне, заинтересованы в постоянных
+                            поставках качественной микрозелени и свежих трав.
+                        </li>
+                        <li>
+                            Магазины здорового питания/Эко-лавки: могут выступать как партнеры для
+                            реализации продукции.
+                        </li>
+                    </ul>
 
-        <h3 id="start-heading"></h3>
-        <div id="start-table-container"></div>
+                    <h3>Конкуренция:</h3>
+                    <ul>
+                        <li>
+                            Традиционные рынки: Традиционные рынки предлагают зелень, но часто ее
+                            качество и свежесть могут варьироваться.
+                        </li>
+                        <li>
+                            Супермаркеты: Предлагают упакованную зелень, но она часто импортная,
+                            менее свежая и обработанная для длительного хранения.
+                        </li>
+                        <li>
+                            Местные фермеры/Дачники: Могут быть конкурентами, но их объемы и
+                            стабильность поставок могут быть ниже.
+                        </li>
+                    </ul>
 
-        <h3 id="cost-heading"></h3>
-        <div id="cost-table-container"></div>
+                    <h3>Наше преимущество:</h3>
+                    <ul>
+                        <li>
+                            Свежесть и качество: Продукция собирается непосредственно перед
+                            продажей.
+                        </li>
+                        <li>
+                            Локальное производство: "От грядки до стола" – привлекает
+                            потребителей, ценящих местный продукт.
+                        </li>
+                        <li>Экологичность: Отсутствие пестицидов и химикатов.</li>
+                        <li>
+                            Индивидуальный подход: Возможность выращивать зелень под заказ для
+                            постоянных клиентов.
+                        </li>
+                    </ul>
 
-        <h3 id="income-heading"></h3>
-        <div id="income-table-container"></div>
+                    <h2>4. Производственный План</h2>
+                    <h3>Оборудование и материалы (стартовые инвестиции):</h3>
+                    <ul>
+                        <li>
+                            Стеллажи: Многоуровневые стеллажи для оптимизации пространства
+                            балкона.
+                        </li>
+                        <li>
+                            Лотки/контейнеры: Плоские лотки с дренажными отверстиями для
+                            проращивания зелени.
+                        </li>
+                        <li>
+                            Почвосмесь/Субстрат: Кокосовый субстрат или специальный грунт для
+                            рассады.
+                        </li>
+                        <li>
+                            Семена: Высококачественные семена микрозелени и трав.
+                        </li>
+                        <li>
+                            Освещение: LED-фитолампы (если балкон недостаточно солнечный, особенно
+                            зимой).
+                        </li>
+                        <li>Опрыскиватель: Для полива. </li>
+                        <li>Ножницы/Нож: Для сбора урожая. </li>
+                        <li>
+                            Упаковочные материалы: Контейнеры, пакеты, этикетки.
+                        </li>
+                        <li>
+                            Система полива (опционально): Капельный полив или автополив для
+                            экономии времени.
+                        </li>
+                    </ul>
 
-        ---
+                    <h3>Процесс выращивания (пример для микрозелени):</h3>
+                    <ul>
+                        <li>Подготовка лотков: Наполнить лотки субстратом, увлажнить.</li>
+                        <li>
+                            Посев семян: Равномерно распределить семена по поверхности. Некоторые
+                            семена требуют замачивания.
+                        </li>
+                        <li>Полив: Регулярный, но умеренный полив, поддерживая влажность.</li>
+                        <li>
+                            Освещение: Обеспечить достаточное естественное или искусственное
+                            освещение (12-16 часов в сутки).
+                        </li>
+                        <li>
+                            Температура: Поддерживать оптимальную температуру (обычно +18-24°C).
+                        </li>
+                        <li>
+                            Сбор урожая: Срезать зелень ножницами, когда она достигнет нужного
+                            размера (5-14 дней в зависимости от культуры).
+                        </li>
+                        <li>Упаковка: Аккуратно упаковать и подготовить к продаже.</li>
+                    </ul>
+                    <p>
+                        <strong>Планирование урожая:</strong> Создать график посевов, чтобы
+                        обеспечить непрерывные поставки свежей зелени. Например, ежедневно
+                        засевать по несколько лотков, чтобы каждый день был готов урожай.
+                    </p>
 
-        <h2>Сводная таблица сумм</h2>
-        <div id="summary-table-container"></div>
+                    <h2>5. Маркетинг и Продажи</h2>
+                    <h3>Каналы продаж:</h3>
+                    <ul>
+                        <li>
+                            Социальные сети: Instagram, Facebook. Создать аккаунт, публиковать
+                            фотографии процесса выращивания, свежего урожая, рецепты с зеленью.
+                            Использовать хештеги типа #микрозеленьодесса #зеленьнабалконе
+                            #здороваяодесса.
+                        </li>
+                        <li>
+                            Местные онлайн-группы: Размещать объявления в группах Одессы по
+                            здоровому питанию, местных рынках.
+                        </li>
+                        <li>
+                            Сарафанное радио: Довольные клиенты – лучшая реклама. Поощрять отзывы.
+                        </li>
+                        <li>
+                            Прямые продажи: Организовать самовывоз с балкона или небольшую
+                            доставку по району (велосипед, пешком).
+                        </li>
+                        <li>
+                            Сотрудничество с бизнесами: Предложить поставки местным кафе,
+                            ресторанам, магазинам здорового питания. Подготовить прайс-лист для
+                            оптовых покупателей.
+                        </li>
+                        <li>
+                            Участие в местных ярмарках/маркетах: Если есть возможность, арендовать
+                            небольшое место на фермерских рынках или маркетах выходного дня.
+                        </li>
+                    </ul>
+
+                    <h3>Ценообразование:</h3>
+                    <ul>
+                        <li>Исследовать цены конкурентов на рынках и в супермаркетах.</li>
+                        <li>
+                            Установить цену, отражающую свежесть, качество и экологичность
+                            продукта.
+                        </li>
+                        <li>
+                            Предлагать скидки для оптовых покупателей или постоянных клиентов.
+                        </li>
+                        <li>
+                            Пример: микрозелень по 30-50 грн за 50-100 грамм, пучок
+                            укропа/петрушки по 20-30 грн.
+                        </li>
+                    </ul>
+
+                    <h3>Продвижение:</h3>
+                    <ul>
+                        <li>
+                            Создать привлекательный логотип и название для вашего "балкона-фермы".
+                        </li>
+                        <li>Предлагать дегустации.</li>
+                        <li>Специальные акции для первых покупателей.</li>
+                    </ul>
+
+                    <h2>6. Управление и Организация</h2>
+                    <p>
+                        <strong>Юридическая форма:</strong> На начальном этапе можно работать
+                        без регистрации, особенно если объемы небольшие и продажи идут напрямую
+                        частным лицам. По мере роста бизнеса и при работе с юридическими лицами
+                        (кафе, магазины) может потребоваться регистрация как ФЛП (Физична
+                        Особа-Підприємець, 2-я группа).
+                    </p>
+                    <p>
+                        <strong>Управление временем:</strong> Выращивание зелени требует
+                        ежедневного внимания (полив, осмотр). Планируйте свое время.
+                    </p>
+                    <p>
+                        <strong>Санитарные нормы:</strong> Соблюдайте чистоту на балконе,
+                        используйте чистые лотки и инструменты, чтобы предотвратить болезни
+                        растений и обеспечить безопасность продукта.
+                    </p>
+                    <p>
+                        <strong>Расширение:</strong> По мере роста спроса можно рассмотреть:
+                    </p>
+                    <ul>
+                        <li>Увеличение количества стеллажей и лотков.</li>
+                        <li>
+                            Переход на более просторное помещение (теплица, аренда помещения).
+                        </li>
+                        <li>Расширение ассортимента.</li>
+                    </ul>
+
+                    <h2>7. Риски и Меры Снижения</h2>
+                    <ul>
+                        <li>
+                            Погодные условия: Жаркое лето или холодная зима могут негативно
+                            сказаться на урожае на балконе.
+                            <ul>
+                                <li>
+                                    Снижение риска: Использование фитоламп зимой, обеспечение
+                                    вентиляции и затенения летом. Выбор культур, устойчивых к
+                                    перепадам температур.
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            Болезни и вредители: Могут появиться при недостаточной гигиене или
+                            неблагоприятных условиях.
+                            <ul>
+                                <li>
+                                    Снижение риска: Регулярный осмотр растений, использование
+                                    биопрепаратов (если потребуется), соблюдение чистоты.
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            Нестабильный спрос: Спрос может колебаться.
+                            <ul>
+                                <li>
+                                    Снижение риска: Активное продвижение, работа с несколькими
+                                    каналами продаж, построение клиентской базы.
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            Порча продукции: Зелень быстро портится.
+                            <ul>
+                                <li>
+                                    Снижение риска: Сбор урожая непосредственно перед продажей,
+                                    правильная упаковка, быстрая доставка.
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+
+                    <h1>Заключение</h1>
+                    <p>
+                        Бизнес по выращиванию зелени на балконе – это отличная возможность
+                        начать свое дело с минимальными инвестициями и получить дополнительный
+                        доход. Он требует усердия и внимания, но при правильном подходе может
+                        стать стабильным и прибыльным источником дохода, предлагая одесситам
+                        свежую и полезную продукцию.
+                    </p>
+                </div>
+
+                <div class="bottom-collapse-button">
+                    <button onclick="collapseContent(this.closest('.collapsible-section'))">Свернуть</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="collapsible-section">
+            <div class="collapsible-header" onclick="toggleContent(this)">
+                <span class="collapsible-header-text">Расчетная часть</span>
+                <button class="collapsible-arrow-button" aria-expanded="false">&#x25BC;</button>
+            </div>
+            <div class="collapsible-content">
+                <div class="count">
+                    <h2>Финансовый План</h2>
+
+                    <h3 id="start-heading"></h3>
+                    <div id="start-table-container"></div>
+
+                    <h3 id="cost-heading"></h3>
+                    <div id="cost-table-container"></div>
+
+                    <h3 id="income-heading"></h3>
+                    <div id="income-table-container"></div>
+
+                    <h2>Сводная таблица</h2>
+                    <div id="summary-table-container"></div>
+                </div>
+
+                <div class="bottom-collapse-button">
+                    <button onclick="collapseContent(this.closest('.collapsible-section'))">Свернуть</button>
+                </div>
+            </div>
+        </div>
+
     </div>
 
     <script>
+        // Функция для переключения состояния контента (используется для верхней стрелки)
+        function toggleContent(headerElement) {
+            // Находим родительский .collapsible-section
+            const section = headerElement.closest('.collapsible-section');
+            const content = section.querySelector('.collapsible-content');
+            const arrowButton = headerElement.querySelector('.collapsible-arrow-button');
+            const bottomButton = content.querySelector('.bottom-collapse-button'); // Находим нижнюю кнопку
+
+            if (content.classList.contains('expanded')) {
+                // Если развернуто, сворачиваем
+                content.classList.remove('expanded');
+                arrowButton.innerHTML = '&#x25BC;'; // Стрелка вниз
+                arrowButton.setAttribute('aria-expanded', 'false');
+                bottomButton.style.display = 'none'; // Скрываем нижнюю кнопку
+            } else {
+                // Если свернуто, разворачиваем
+                content.classList.add('expanded');
+                arrowButton.innerHTML = '&#x25B2;'; // Стрелка вверх
+                arrowButton.setAttribute('aria-expanded', 'true');
+                // Даем анимации завершиться, прежде чем показать нижнюю кнопку,
+                // чтобы она не появлялась резко в процессе раскрытия.
+                // Можно и сразу показать, если анимация не критична.
+                setTimeout(() => {
+                    bottomButton.style.display = 'block';
+                }, 300); // Соответствует времени transition для max-height
+            }
+        }
+
+        // Функция для сворачивания контента (используется для нижней кнопки)
+        function collapseContent(sectionElement) {
+            const content = sectionElement.querySelector('.collapsible-content');
+            const arrowButton = sectionElement.querySelector('.collapsible-arrow-button');
+            const bottomButton = content.querySelector('.bottom-collapse-button');
+
+            content.classList.remove('expanded');
+            arrowButton.innerHTML = '&#x25BC;'; // Стрелка вниз
+            arrowButton.setAttribute('aria-expanded', 'false');
+            bottomButton.style.display = 'none'; // Скрываем нижнюю кнопку
+        }
+    </script>
+    <script>
         // Данные для таблиц
+        const countMicrogreens = 20;
+        const countParsley = 30;
+        const stack = {
+            h: 1.8,
+            w: 0.64,
+            l: 0.4,
+            floor: 5,
+            count: 1200,
+            sq: function () { return this.w * this.l * this.floor }
+        }
+        const tray = {
+            h: 0.06,
+            w: 0.35,
+            l: 0.25,
+            count: 25,
+            sq: function () { return this.w * this.l }
+        };
         const start = [
+            { description: "Стеллажи" + stack.sq(), praсe: 2 * stack.count },
+            { description: "Лотки", praсe: Math.round(tray.count * 2 * stack.sq() / tray.sq()) },
+            { description: "Почвосмесь/Субстрат", praсe: 200 },
             {
-                description: "Стеллажи",
-                prase: 1500
+                description: "Семена",
+                praсe: 20 * (countMicrogreens + countParsley),
             },
+            { description: "Фитолампы (если нужны)", praсe: 1000 },
+            { description: "Прочий инвентарь", praсe: 300 },
             {
-                description: "Стеллажи",
-                prase: 1500
-            },
-            {
-                description: "Почвосмесь",
-                prase: 200
+                description: "Упаковка",
+                praсe: 6 * (countMicrogreens + countParsley),
             },
         ];
 
         const cost = [
             {
                 description: "Семена",
-                prase: 500
+                praсe: 20 * (countMicrogreens + countParsley),
             },
+            { description: "Почвосмесь/Субстрат", praсe: 200 },
             {
                 description: "Упаковка",
-                prase: 300
+                praсe: 6 * (countMicrogreens + countParsley),
             },
         ];
 
         const income = [
-            {
-                description: "Микрозелень",
-                prase: 3000
-            },
-            {
-                description: "Зелень",
-                prase: 3200
-            },
+            { description: "Микрозелень", praсe: countMicrogreens * 4 * 40 },
+            { description: "Зелень", praсe: countParsley * 25 * 4 },
         ];
 
         // Функция для создания таблицы из массива данных
@@ -255,84 +765,103 @@
             }
 
             let tableHTML = `
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Описание</th>
-                            <th>Стоимость (prase)</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-            `;
-            let totalPrase = 0;
-
-            data.forEach(item => {
-                tableHTML += `
-                    <tr>
-                        <td data-label="Описание">${item.description}</td>
-                        <td data-label="Стоимость (prase)">${item.prase}</td>
-                    </tr>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Описание</th>
+                                <th>сумма</th>
+                            </tr>
+                        </thead>
+                        <tbody>
                 `;
-                totalPrase += item.prase;
+            let totalpraсe = 0;
+
+            data.forEach((item) => {
+                tableHTML += `
+                        <tr>
+                            <td data-label="Описание">${item.description}</td>
+                            <td data-label="Стоимость">${item.praсe}</td>
+                        </tr>
+                    `;
+                totalpraсe += item.praсe;
             });
 
             tableHTML += `
-                    <tr class="total-row">
-                        <td data-label="Описание"><strong>Сумма:</strong></td>
-                        <td data-label="Стоимость (prase)"><strong>${totalPrase}</strong></td>
-                    </tr>
-                    </tbody>
-                </table>
-            `;
+                        <tr class="total-row">
+                            <td data-label="Описание"><strong>Сумма:</strong></td>
+                            <td data-label="Стоимость"><strong>${totalpraсe}</strong></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                `;
             container.innerHTML = tableHTML;
-            return totalPrase; // Возвращаем сумму для сводной таблицы
+            return totalpraсe; // Возвращаем сумму для сводной таблицы
         }
 
         // Генерируем таблицы и получаем их суммы
-        const totalStart = createTable(start, "Стартовые инвестиции (Start)", "start-table-container", "start-heading");
-        const totalCost = createTable(cost, "Текущие расходы (Cost)", "cost-table-container", "cost-heading");
-        const totalIncome = createTable(income, "Ожидаемый доход (Income)", "income-table-container", "income-heading");
+        const totalStart = createTable(
+            start,
+            "Стартовые инвестиции",
+            "start-table-container",
+            "start-heading"
+        );
+        const totalCost = createTable(
+            cost,
+            "Ежемесячные операционные расходы",
+            "cost-table-container",
+            "cost-heading"
+        );
+        const totalIncome = createTable(
+            income,
+            "Прогнозируемые доходы",
+            "income-table-container",
+            "income-heading"
+        );
 
         // Создаем данные для сводной таблицы
         const summaryData = [
-            { description: "Start", prase: totalStart },
-            { description: "Cost", prase: totalCost },
-            { description: "Income", prase: totalIncome }
+            { description: "Стартовые инвестиции", praсe: totalStart },
+            { description: "Ежемесячные операционные расходы", praсe: totalCost },
+            { description: "Прогнозируемые доходы", praсe: totalIncome },
+            {
+                description: "Рентабельность: Прибыль = Доходы - Расходы",
+                praсe: totalIncome - totalCost,
+            },
         ];
 
         // Функция для создания сводной таблицы
         function createSummaryTable(data, containerId) {
             const container = document.getElementById(containerId);
             let tableHTML = `
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Категория</th>
-                            <th>Сумма (prase)</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-            `;
-
-            data.forEach(item => {
-                tableHTML += `
-                    <tr>
-                        <td data-label="Категория">${item.description}</td>
-                        <td data-label="Сумма (prase)">${item.prase}</td>
-                    </tr>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Категория</th>
+                                <th>Сумма</th>
+                            </tr>
+                        </thead>
+                        <tbody>
                 `;
+
+            data.forEach((item) => {
+                tableHTML += `
+                        <tr>
+                            <td data-label="Категория">${item.description}</td>
+                            <td data-label="Сумма">${item.praсe}</td>
+                        </tr>
+                    `;
             });
 
             tableHTML += `
-                    </tbody>
-                </table>
-            `;
+                        </tbody>
+                    </table>
+                `;
             container.innerHTML = tableHTML;
         }
 
         // Генерируем сводную таблицу
         createSummaryTable(summaryData, "summary-table-container");
-
     </script>
 </body>
+
 </html>
