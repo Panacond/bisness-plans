@@ -1,6 +1,4 @@
 // Данные для таблиц
-const countMicrogreens = 20;
-const countParsley = 30;
 const lettuce = {
   name: function(){return "латук " + this.count() + "шт"},
   cost: 17,

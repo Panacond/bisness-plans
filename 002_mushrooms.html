@@ -1,0 +1,1129 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Сворачивающийся Текст с двумя кнопками</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      padding: 0;
+      background-color: #f4f4f4;
+      color: #333;
+      font-size: 16px;
+      /* Базовый размер текста */
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      background-color: #fff;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      font-size: 32px;
+      /* Базовый размер H1 */
+      color: #2c3e50;
+      margin-bottom: 20px;
+    }
+
+    h2 {
+      font-size: 28px;
+      /* Базовый размер H2 */
+      color: #2c3e50;
+      margin-top: 30px;
+      margin-bottom: 15px;
+    }
+
+    h3 {
+      font-size: 24px;
+      /* Базовый размер H3 */
+      color: #2c3e50;
+      margin-top: 25px;
+      margin-bottom: 10px;
+    }
+
+    p {
+      margin-bottom: 15px;
+    }
+
+    ul,
+    ol {
+      margin-bottom: 15px;
+      padding-left: 20px;
+    }
+
+    li {
+      margin-bottom: 5px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+      margin-bottom: 30px;
+      font-size: 16px;
+      /* Базовый размер текста в таблицах */
+    }
+
+    table th,
+    table td {
+      border: 1px solid #ddd;
+      padding: 10px;
+      text-align: left;
+    }
+
+    table th {
+      background-color: #e2e6ea;
+      font-weight: bold;
+      color: #333;
+    }
+
+    table tbody tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+
+    /* Стили для строк с суммой */
+    table tr.total-row td {
+      font-weight: bold;
+      background-color: #d1ecf1;
+    }
+
+    /* --- Медиа-запросы для адаптивного дизайна --- */
+    @media screen and (max-width: 768px) {
+      body {
+        font-size: 18px;
+        /* Крупнее для мобильных */
+      }
+
+      .container {
+        margin: 10px;
+        padding: 20px;
+      }
+
+      h1 {
+        font-size: 36px;
+        /* Крупнее заголовки H1 */
+      }
+
+      h2 {
+        font-size: 30px;
+        /* Крупнее заголовки H2 */
+      }
+
+      h3 {
+        font-size: 26px;
+        /* Крупнее заголовки H3 */
+      }
+
+      table {
+        font-size: 18px;
+        /* Крупнее текст в таблицах */
+        display: block;
+        /* Позволяет таблице вести себя как блочный элемент */
+        width: 100%;
+        overflow-x: auto;
+        /* Добавляет горизонтальную прокрутку, если таблица слишком широкая */
+        -webkit-overflow-scrolling: touch;
+        /* Улучшает прокрутку на iOS */
+      }
+
+      /* Для улучшения читаемости таблиц на мобильных:
+               скрываем заголовки столбцов и отображаем их как метки для каждой ячейки */
+      table thead {
+        display: none;
+      }
+
+      table,
+      tbody,
+      th,
+      td,
+      tr {
+        display: block;
+      }
+
+      table tr {
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        padding: 10px;
+        border-radius: 5px;
+      }
+
+      table td {
+        border: none;
+        border-bottom: 1px solid #eee;
+        position: relative;
+        padding-left: 50%;
+        /* Место для метки */
+        text-align: right;
+      }
+
+      table td:before {
+        position: absolute;
+        left: 6px;
+        content: attr(data-label);
+        /* Использует атрибут data-label из HTML */
+        font-weight: bold;
+        text-align: left;
+        width: 45%;
+        /* Ширина для метки */
+      }
+
+      table td:last-child {
+        border-bottom: 0;
+      }
+
+      table tr.total-row td {
+        text-align: right;
+        /* Суммы выравниваем по правому краю */
+        padding-left: 6px;
+        /* Убираем отступ для метки для строк суммы */
+      }
+
+      table tr.total-row td:before {
+        content: "";
+        /* Скрываем метку для строки с суммой */
+      }
+    }
+
+    .collapsible-section {
+      margin-bottom: 25px;
+      /* Отступ между секциями */
+    }
+
+    .collapsible-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #e2e6ea;
+      padding: 10px 15px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+      color: #2c3e50;
+      margin-bottom: 0;
+      /* Отступ от блока текста убран */
+    }
+
+    .collapsible-header:hover {
+      background-color: #d1ecf1;
+    }
+
+    .collapsible-header-text {
+      flex-grow: 1;
+      /* Позволяет тексту занимать доступное пространство */
+    }
+
+    /* Стиль для кнопки-стрелки */
+    .collapsible-arrow-button {
+      background: none;
+      border: none;
+      font-size: 20px;
+      cursor: pointer;
+      color: #2c3e50;
+      padding: 0;
+      margin-left: 10px;
+      /* Отступ от текста заголовка */
+      line-height: 1;
+      /* Убрать лишний отступ */
+    }
+
+    .collapsible-content {
+      max-height: 0;
+      /* Изначально скрыто */
+      overflow: hidden;
+      transition: max-height 0.3s ease-out, padding-top 0.3s ease-out;
+      /* Плавное открытие/закрытие */
+      padding: 0 15px;
+      /* Отступы внутри содержимого */
+      background-color: #f9f9f9;
+      border-bottom-left-radius: 5px;
+      border-bottom-right-radius: 5px;
+      border: 1px solid #e2e6ea;
+      border-top: none;
+      /* Убираем верхнюю границу, чтобы сливалось с заголовком */
+    }
+
+    .collapsible-content.expanded {
+      max-height: 10000px;
+      /* Достаточно большое значение для "развернуто" */
+      transition: max-height 0.5s ease-in, padding-top 0.5s ease-in;
+      /* Плавное открытие */
+      padding-top: 15px;
+      /* Отступ сверху при развернутом */
+      padding-bottom: 15px;
+      /* Отступ снизу развернутого текста */
+    }
+
+    .collapsible-content p {
+      margin-top: 0;
+      margin-bottom: 10px;
+    }
+
+    /* Стиль для нижней кнопки "Свернуть" */
+    .bottom-collapse-button {
+      text-align: center;
+      margin-top: 15px;
+      /* Отступ от текста выше */
+      /* Кнопка изначально будет скрыта, её видимость управляется JS */
+      display: none;
+    }
+
+    .bottom-collapse-button button {
+      background-color: #dc3545;
+      /* Красный цвет для кнопки "Свернуть" */
+      color: white;
+      border: none;
+      padding: 8px 15px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 14px;
+      transition: background-color 0.2s;
+    }
+
+    .bottom-collapse-button button:hover {
+      background-color: #c82333;
+    }
+  </style>
+
+</head>
+
+<body>
+  <header>
+    <div class="container">
+      <h1>Бизнес-план: Выращивание Микрозелени на Балконе в Одессе</h1>
+      <nav>
+        <ul>
+          <li><a href="index.html">Оглавление</a></li>
+          <li><a href="page1.html" class="active">Микрозелень</a></li>
+          <li><a href="page2.html" class="active">Грибы</a></li>
+          <li><a href="contact.html">Контакты</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <div class="container">
+    <h1>Бизнес-план: Выращивание Грибов на Балконе</h1>
+
+    <div class="collapsible-section">
+      <div class="collapsible-header" onclick="toggleContent(this)">
+        <span class="collapsible-header-text">Бизнес-план: Общее описание</span>
+        <button class="collapsible-arrow-button" aria-expanded="false">
+          &#x25BC;
+        </button>
+      </div>
+      <div class="collapsible-content">
+        <div class="text">
+          <h1>Бизнес-план: Выращивание Грибов на Балконе</h1>
+          <p>
+            Этот бизнес-план разработан для создания небольшого бизнеса по
+            выращиванию съедобных грибов на балконе городской квартиры. Основное
+            внимание будет уделено вешенке как наиболее подходящему виду для
+            домашнего выращивания благодаря относительной неприхотливости и
+            быстрому циклу роста.
+          </p>
+
+          <h2>1. Резюме Проекта</h2>
+          <p>
+            <strong>Цель:</strong> Создание прибыльного микробизнеса по
+            выращиванию и продаже свежих, экологически чистых грибов вешенка
+            жителям, используя ограниченное пространство балкона.
+          </p>
+          <p>
+            <strong>Продукт:</strong> Свежие грибы вешенка. В перспективе возможно
+            расширение ассортимента на другие виды (например, шиитаке, но они
+            более требовательны).
+          </p>
+          <p>
+            <strong>Целевая аудитория:</strong> Частные лица (любители здорового
+            питания, вегетарианцы), местные кафе и рестораны, магазины здорового
+            питания.
+          </p>
+          <p>
+            <strong>Преимущества:</strong> Свежесть, местное производство,
+            экологичность, относительно быстрый оборот, низкие стартовые
+            инвестиции, круглогодичное выращивание (при правильном подходе).
+          </p>
+          <p><strong>Локация:</strong> Балкон городской квартиры</p>
+
+          <h2>2. Описание Продукта и Услуг</h2>
+          <p>
+            Мы будем предлагать свежие грибы вешенка (Pleurotus ostreatus).
+            Вешенка обладает приятным вкусом, мясистой структурой и высокой
+            пищевой ценностью. Она хорошо хранится и популярна в кулинарии.
+          </p>
+          <h3>Характеристики продукта:</h3>
+          <ul>
+            <li>
+              <strong>Свежесть:</strong> Грибы будут собираться непосредственно
+              перед продажей или доставкой, что гарантирует максимальную свежесть.
+            </li>
+            <li>
+              <strong>Экологичность:</strong> Выращивание без использования
+              пестицидов и химикатов.
+            </li>
+            <li>
+              <strong>Разнообразие (потенциально):</strong> В дальнейшем можно
+              экспериментировать с различными штаммами вешенки, которые могут
+              отличаться по цвету и форме, или пробовать другие виды грибов, если
+              условия балкона это позволят.
+            </li>
+          </ul>
+          <p>
+            <strong>Упаковка:</strong> Грибы будут продаваться в удобной, дышащей
+            упаковке (например, бумажные пакеты или перфорированные пластиковые
+            контейнеры), чтобы сохранить их свежесть и предотвратить конденсацию.
+            Возможно, брендирование простой этикеткой.
+          </p>
+
+          <h2>3. Анализ Рынка</h2>
+          <h3>Потребители:</h3>
+          <p>Наша целевая аудитория:</p>
+          <ul>
+            <li>
+              Частные потребители: люди, которые предпочитают свежие, местные
+              продукты, заботятся о здоровом питании, вегетарианцы.
+            </li>
+            <li>
+              Кафе и рестораны: особенно те, кто ценит свежие ингредиенты и готов
+              платить за локальный, качественный продукт. Грибы вешенка широко
+              используются в различных кухнях.
+            </li>
+            <li>
+              Магазины здорового питания / Эко-лавки: могут быть партнерами для
+              реализации продукции.
+            </li>
+          </ul>
+
+          <h3>Конкуренция:</h3>
+          <ul>
+            <li>
+              Супермаркеты: Основные поставщики грибов, чаще всего шампиньонов,
+              реже вешенки. Их продукция может быть не такой свежей и иметь более
+              длительный путь от производителя к покупателю.
+            </li>
+            <li>
+              Рынки: На рынках могут быть грибы от местных фермеров или
+              дикорастущие (сезонно), но стабильность поставок и качество могут
+              варьироваться.
+            </li>
+            <li>
+              Крупные грибные фермы: Конкурируют объемами и ценой, но не могут
+              предложить ту же степень свежести и "домашнего" продукта.
+            </li>
+          </ul>
+
+          <h3>Наше преимущество:</h3>
+          <ul>
+            <li>
+              Максимальная свежесть: Сбор урожая день в день или за несколько
+              часов до продажи.
+            </li>
+            <li>
+              Локальное производство: "От балкона до стола" – привлекает
+              потребителей, ценящих местный продукт и минимальный "углеродный
+              след".
+            </li>
+            <li>
+              Экологичность: Отсутствие химикатов, что является важным фактором
+              для многих потребителей.
+            </li>
+            <li>
+              Возможность индивидуальных поставок: Гибкость для небольших кафе и
+              ресторанов.
+            </li>
+          </ul>
+
+          <h2>4. Производственный План</h2>
+          <p>
+            Выращивание грибов вешенка на балконе обычно осуществляется на грибных
+            блоках (субстратных блоках).
+          </p>
+          <h3>Оборудование и материалы (стартовые инвестиции):</h3>
+          <ul>
+            <li>
+              <strong>Грибные блоки (готовые или для самостоятельного
+                изготовления):</strong>
+              <ul>
+                <li>
+                  Готовые блоки: Это самый простой вариант для новичков. Вы
+                  покупаете уже инокулированный субстрат.
+                </li>
+                <li>
+                  Для самостоятельного изготовления:
+                  <ul>
+                    <li>
+                      Субстрат (солома, лузга подсолнечника, опилки) – часто можно
+                      найти недорого или бесплатно.
+                    </li>
+                    <li>
+                      Мицелий вешенки – продается специализированными
+                      производителями
+                    </li>
+                    <li>
+                      Мешки для субстрата (специальные термостойкие или обычные
+                      плотные).
+                    </li>
+                    <li>
+                      Емкость для пропаривания/стерилизации субстрата (большая
+                      кастрюля, бочка) – возможно, уже есть.
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <strong>Стеллажи:</strong> Для размещения грибных блоков,
+              оптимизации пространства. Важно, чтобы они выдерживали вес блоков.
+            </li>
+            <li>
+              <strong>Система поддержания влажности:</strong>
+              <ul>
+                <li>
+                  Ультразвуковой увлажнитель воздуха (туманогенератор) – ключевой
+                  элемент! Грибам нужна высокая влажность (80-95%).
+                </li>
+                <li>Гигрометр (измеритель влажности) – обязательно.</li>
+                <li>Пульверизатор для ручного опрыскивания.</li>
+              </ul>
+            </li>
+            <li><strong>Термометр:</strong> Для контроля температуры.</li>
+            <li>
+              <strong>Система вентиляции:</strong> Для притока свежего воздуха и
+              удаления углекислого газа. На балконе может быть достаточно
+              естественной вентиляции при регулярном проветривании, но зимой или в
+              закрытом балконе может понадобиться небольшой вытяжной вентилятор.
+              (200-500 грн)
+            </li>
+            <li>
+              <strong>Освещение:</strong> Грибам нужен неяркий рассеянный свет
+              (как в пасмурный день), достаточно дневного света с балкона, но без
+              прямых солнечных лучей. Фитолампы не нужны.
+            </li>
+            <li>
+              <strong>Упаковочные материалы:</strong> Бумажные пакеты, лотки.
+            </li>
+            <li><strong>Нож:</strong> Для сбора урожая.</li>
+          </ul>
+
+          <h3>Процесс выращивания (для готовых блоков):</h3>
+          <ul>
+            <li>
+              <strong>Подготовка места:</strong> Разместить стеллажи на балконе,
+              обеспечить защиту от прямых солнечных лучей и сквозняков.
+            </li>
+            <li>
+              <strong>Размещение блоков:</strong> Развесить или установить грибные
+              блоки на стеллажах. Сделать небольшие разрезы (крестообразные или
+              "П"-образные) в мешках, откуда будут расти грибы.
+            </li>
+            <li>
+              <strong>Инокуляция (если делаете блоки сами):</strong> Смешать
+              остывший, простерилизованный субстрат с мицелием в чистых условиях.
+              Заполнить мешки. Этот этап требует стерильности.
+            </li>
+            <li>
+              <strong>Инкубация (для самостоятельного изготовления):</strong> В
+              течение 10-20 дней мицелий разрастается по субстрату при температуре
+              около +20-25°C. На балконе это возможно только в теплую погоду или в
+              утепленном пространстве.
+            </li>
+            <li>
+              <strong>Плодоношение:</strong> Перенести блоки в условия,
+              стимулирующие плодоношение:
+              <ul>
+                <li>
+                  Температура: +12-18°C (идеально). На балконе это может быть
+                  вызовом летом и зимой. Возможно, придется утеплять балкон или
+                  использовать обогреватель/кондиционер для поддержания.
+                </li>
+                <li>
+                  Влажность: 80-95%. Критично! Обеспечить с помощью увлажнителя
+                  или частым опрыскиванием.
+                </li>
+                <li>
+                  Вентиляция: Свежий воздух и отсутствие застоя. Регулярное
+                  проветривание.
+                </li>
+                <li>Свет: Рассеянный дневной свет.</li>
+              </ul>
+            </li>
+            <li>
+              <strong>Сбор урожая:</strong> Когда шляпки грибов расправятся, но
+              края еще немного загнуты, собирать целыми гроздями, аккуратно
+              выкручивая или срезая. Обычно сбор происходит в несколько "волн"
+              (флешей) с интервалом в 1-2 недели.
+            </li>
+            <li><strong>Упаковка:</strong> Аккуратно упаковать грибы.</li>
+          </ul>
+
+          <h3>Особенности балкона:</h3>
+          <ul>
+            <li>
+              <strong>Лето (жара):</strong> Температура на балконе может быть
+              слишком высокой для плодоношения вешенки. Возможно, потребуется
+              дополнительное охлаждение (портативный кондиционер) или перенос
+              блоков в более прохладное место на период жары.
+            </li>
+            <li>
+              <strong>Зима (холод):</strong> Температура может быть слишком
+              низкой. Потребуется утепление балкона и/или обогреватель.
+            </li>
+            <li>
+              <strong>Влажность:</strong> Придется активно использовать
+              увлажнитель, особенно летом.
+            </li>
+            <li>
+              <strong>Проветривание:</strong> Летом можно открывать окна, зимой -
+              короткое, но интенсивное проветривание.
+            </li>
+          </ul>
+
+          <h2>5. Маркетинг и Продажи</h2>
+          <h3>Каналы продаж:</h3>
+          <ul>
+            <li>
+              Социальные сети: Instagram, Facebook. Фотографии свежих грибов,
+              процесс выращивания, рецепты. Использовать хештеги #грибы_город
+              #вешенка #экопродукты_город.
+            </li>
+            <li>
+              Местные онлайн-группы: Размещать объявления в группах города,
+              посвященных еде, здоровому питанию, местным рынкам.
+            </li>
+            <li>Сарафанное радио: Довольные клиенты – лучшая реклама.</li>
+            <li>
+              Прямые продажи: Самовывоз. Возможно, небольшая доставка по району
+              (велосипед).
+            </li>
+            <li>
+              Сотрудничество с бизнесами: Предложить поставки местным кафе,
+              ресторанам, которые ценят свежие и местные ингредиенты. Подготовить
+              прайс-лист для оптовых покупателей. Акцент на "выращено в Одессе".
+            </li>
+            <li>
+              Фермерские ярмарки/маркеты: Если есть возможность, участие в местных
+              ярмарках выходного дня.
+            </li>
+          </ul>
+
+          <h3>Ценообразование:</h3>
+          <ul>
+            <li>
+              Исследовать цены на свежие грибы вешенка в одесских супермаркетах и
+              на рынках.
+            </li>
+            <li>
+              Установить цену, которая будет конкурентоспособной, но при этом
+              отражать свежесть, качество и местное происхождение продукта.
+              Свежие, локальные грибы могут стоить на 10-20% дороже, чем
+              супермаркетные.
+            </li>
+          </ul>
+
+          <h3>Продвижение:</h3>
+          <ul>
+            <li>
+              Создать уникальное название и логотип для вашего "грибного балкона".
+            </li>
+            <li>Предлагать пробные партии для кафе/ресторанов.</li>
+            <li>Акции для первых или постоянных клиентов.</li>
+            <li>Подчеркивать экологичность и отсутствие химии.</li>
+          </ul>
+
+          <h2>6. Технология</h2>
+          <p>
+            Один грибной блок весом 5-10 кг субстрата может дать 1.5-3 кг грибов
+            за несколько волн. Допустим, 10 блоков дают 20 кг грибов в месяц (по 2
+            кг с блока, с учетом неидеальных условий балкона).
+          </p>
+
+          <h2>7. Управление и Организация</h2>
+          <p>
+            <strong>Юридическая форма:</strong> Начать можно как физическое лицо.
+            При работе с кафе/магазинами и увеличении объемов потребуется
+            регистрация ФЛП (Физична Особа-Підприємець, 2-я группа).
+          </p>
+          <p>
+            <strong>Микроклимат:</strong> Это самый важный аспект грибоводства.
+            Придется постоянно контролировать температуру, влажность и вентиляцию.
+            Возможно, потребуется автоматизация (умные розетки для увлажнителя,
+            таймеры для вентилятора).
+          </p>
+          <p>
+            <strong>Санитарные нормы:</strong> Соблюдайте чистоту на балконе,
+            используйте чистые инструменты, чтобы предотвратить появление плесени
+            и вредителей.
+          </p>
+          <p><strong>Расширение:</strong> По мере роста спроса и опыта можно:</p>
+          <ul>
+            <li>Увеличить количество грибных блоков.</li>
+            <li>
+              Масштабировать производство (аренда небольшого подвала, гаража).
+            </li>
+            <li>
+              Экспериментировать с другими, более требовательными видами грибов
+              (шиитаке).
+            </li>
+          </ul>
+
+          <h2>8. Риски и меры снижения</h2>
+          <ul>
+            <li>
+              <strong>Нарушение микроклимата:</strong> Высокие температуры летом,
+              низкие зимой, недостаточная влажность.
+              <ul>
+                <li>
+                  Снижение риска: Использование увлажнителей, вентиляторов,
+                  обогревателей/кондиционеров. Возможно, выращивание только в
+                  межсезонье (весна/осень), если балкон не утеплен. Выбор штаммов
+                  вешенки, более устойчивых к перепадам температур.
+                </li>
+              </ul>
+            </li>
+            <li>
+              <strong>Заражение плесенью/бактериями:</strong> Частая проблема при
+              грибоводстве, особенно при самостоятельном изготовлении блоков.
+              <ul>
+                <li>
+                  Снижение риска: Покупка готовых, качественных грибных блоков.
+                  Строгое соблюдение стерильности при работе с мицелием и
+                  субстратом, если делаете блоки сами. Хорошая вентиляция.
+                </li>
+              </ul>
+            </li>
+            <li>
+              <strong>Нестабильный спрос:</strong> Как и с любым продуктом.
+              <ul>
+                <li>
+                  Снижение риска: Активная маркетинговая деятельность, поиск
+                  постоянных клиентов (кафе, рестораны), участие в ярмарках.
+                </li>
+              </ul>
+            </li>
+            <li>
+              <strong>Порча продукции:</strong> Грибы быстро теряют товарный вид.
+              <ul>
+                <li>
+                  Снижение риска: Сбор урожая непосредственно перед продажей,
+                  правильная упаковка, быстрая реализация.
+                </li>
+              </ul>
+            </li>
+            <li>
+              <strong>Зависимость от поставщиков блоков/мицелия:</strong>
+              <ul>
+                <li>
+                  Снижение риска: Искать нескольких надежных поставщиков,
+                  рассмотреть вариант самостоятельного изготовления блоков после
+                  набора опыта.
+                </li>
+              </ul>
+            </li>
+          </ul>
+
+          <h1>Заключение</h1>
+          <p>
+            Выращивание грибов вешенка на балконе – это интересный и
+            потенциально прибыльный микробизнес. Он требует более глубокого
+            понимания специфики выращивания грибов и постоянного контроля
+            микроклимата, чем зелень. Однако, при должном внимании к деталям и
+            соблюдении технологий, вы сможете предлагать свежий, качественный и
+            востребованный продукт на местном рынке. Начните с небольшого
+            количества блоков, чтобы набраться опыта и понять возможности вашего
+            балкона.
+          </p>
+        </div>
+
+        <div class="bottom-collapse-button">
+          <button onclick="collapseContent(this.closest('.collapsible-section'))">
+            Свернуть
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="collapsible-section">
+      <div class="collapsible-header" onclick="toggleContent(this)">
+        <span class="collapsible-header-text">Расчетная часть</span>
+        <button class="collapsible-arrow-button" aria-expanded="false">
+          &#x25BC;
+        </button>
+      </div>
+      <div class="collapsible-content">
+        <div class="count">
+          <h3 id="start-heading"></h3>
+          <div id="start-table-container"></div>
+
+          <h3 id="cost-heading"></h3>
+          <div id="cost-table-container"></div>
+
+          <h3 id="income-heading"></h3>
+          <div id="income-table-container"></div>
+
+          <h2>Сводная таблица</h2>
+          <div id="summary-table-container"></div>
+        </div>
+
+        <div class="bottom-collapse-button">
+          <button onclick="collapseContent(this.closest('.collapsible-section'))">
+            Свернуть
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 Мой Сайт. Все права защищены.</p>
+    </div>
+  </footer>
+  <script>
+    const stack = {
+      h: 1.8,
+      w: 0.64,
+      l: 0.4,
+      floor: 5,
+      count: 2,
+      price: 1200,
+      get sq() {
+        return this.w * this.l * this.floor * this.count;
+      },
+      get volume() { return Math.round(this.h * this.w * this.l * this.count * 100) / 100 },
+
+    };
+    const mushroomBlock = {
+      price: 100,
+      weight: 8,
+      harvest: 2.5,
+      height: 0.7,
+      diametr: 0.3,
+      get volume() { return this.diametr ** 2 * this.height },
+      get count() { return Math.round(stack.volume / this.volume) },
+      timeDay: 20,
+      cost: 100/0.4,
+      get incomePerMount(){ 
+        return this.cost*this.count*this.harvest*this.timeDay/30
+      }
+    };
+    const package = {
+      price: 349 / 100,
+      volume: 0.25,
+      get count() { return mushroomBlock.count * mushroomBlock.harvest / this.volume }
+    };
+    const humidifier = {
+      price: 1200,
+      electisity: 30,
+      vater: 4
+    }
+    const start = [
+      {
+        description: "Стеллажи " + stack.count + "шт. (общая объем)" + stack.volume + "м.куб",
+        price: stack.count * stack.price,
+        time: 4,
+        worker: 150,
+      },
+      {
+        description: "Грибные блоки (готовые " + mushroomBlock.count + " шт)",
+        price: mushroomBlock.count * mushroomBlock.price,
+        time: 2,
+        worker: 150,
+      },
+      {
+        description: "Ультразвуковой увлажнитель",
+        price: 1500,
+        time: 0.2,
+        worker: 150,
+      },
+      {
+        description: "Гигрометр/Термометр", price: 140,
+        time: 0.5,
+        worker: 150,
+      },
+      {
+        description: "Упаковка" + package.count + "шт",
+        price: Math.round(package.price * package.count),
+        time: 4,
+        worker: 150,
+      },
+      {
+        description: "Электричество",
+        price: Math.round(5 / 1000 * 2 * 4 * mushroomBlock.timeDay * humidifier.electisity),
+        time: 1,
+        worker: 150,
+      },
+      {
+        description: "Вода",
+        price: Math.round(35 / 1000 * 2 * 4 * mushroomBlock.timeDay * humidifier.vater),
+        time: 0,
+        worker: 150,
+      },
+    ];
+
+    const cost = [
+      {
+        description: "Грибные блоки (готовые " + mushroomBlock.count + " шт)",
+        price: mushroomBlock.count * mushroomBlock.price,
+        time: 2,
+        worker: 150,
+      },
+      {
+        description: "Упаковка" + package.count + "шт",
+        price: Math.round(package.price * package.count),
+        time: 4,
+        worker: 150,
+      },
+      {
+        description: "Электричество",
+        price: Math.round(5 / 1000 * 2 * 4 * mushroomBlock.timeDay * humidifier.electisity),
+        time: 1,
+        worker: 150,
+      },
+      {
+        description: "Вода",
+        price: Math.round(35 / 1000 * 2 * 4 * mushroomBlock.timeDay * humidifier.vater),
+        time: 0,
+        worker: 150,
+      },
+    ];
+
+    const income = [
+      { description: "Один грибной блок весом 5-10 кг субстрата может дать 1.5-3 кг грибов за несколько волн", price: mushroomBlock.incomePerMount },
+    ];
+  </script>
+
+  <script>
+    // Функция для переключения состояния контента (используется для верхней стрелки)
+    function toggleContent(headerElement) {
+      // Находим родительский .collapsible-section
+      const section = headerElement.closest(".collapsible-section");
+      const content = section.querySelector(".collapsible-content");
+      const arrowButton = headerElement.querySelector(
+        ".collapsible-arrow-button"
+      );
+      const bottomButton = content.querySelector(".bottom-collapse-button"); // Находим нижнюю кнопку
+
+      if (content.classList.contains("expanded")) {
+        // Если развернуто, сворачиваем
+        content.classList.remove("expanded");
+        arrowButton.innerHTML = "&#x25BC;"; // Стрелка вниз
+        arrowButton.setAttribute("aria-expanded", "false");
+        bottomButton.style.display = "none"; // Скрываем нижнюю кнопку
+      } else {
+        // Если свернуто, разворачиваем
+        content.classList.add("expanded");
+        arrowButton.innerHTML = "&#x25B2;"; // Стрелка вверх
+        arrowButton.setAttribute("aria-expanded", "true");
+        // Даем анимации завершиться, прежде чем показать нижнюю кнопку,
+        // чтобы она не появлялась резко в процессе раскрытия.
+        // Можно и сразу показать, если анимация не критична.
+        setTimeout(() => {
+          bottomButton.style.display = "block";
+        }, 300); // Соответствует времени transition для max-height
+      }
+    }
+
+    // Функция для сворачивания контента (используется для нижней кнопки)
+    function collapseContent(sectionElement) {
+      const content = sectionElement.querySelector(".collapsible-content");
+      const arrowButton = sectionElement.querySelector(
+        ".collapsible-arrow-button"
+      );
+      const bottomButton = content.querySelector(".bottom-collapse-button");
+
+      content.classList.remove("expanded");
+      arrowButton.innerHTML = "&#x25BC;"; // Стрелка вниз
+      arrowButton.setAttribute("aria-expanded", "false");
+      bottomButton.style.display = "none"; // Скрываем нижнюю кнопку
+    }
+  </script>
+  <script>
+
+    // Функция для создания таблицы из массива данных
+    function createTable(data, title, containerId, headingId) {
+      const container = document.getElementById(containerId);
+      const heading = document.getElementById(headingId);
+
+      if (heading) {
+        heading.textContent = title;
+      }
+
+      let tableHTML = `
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Описание</th>
+                                <th>Ресурсы гр.</th>
+                                <th>Время ч.</th>
+                                <th>Рабочий чел./час</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                `;
+      let totalprice = 0;
+      let totaltime = 0;
+      let totalwork = 0;
+
+      data.forEach((item) => {
+        tableHTML += `
+                        <tr>
+                            <td data-label="Описание">${item.description}</td>
+                            <td data-label="Ресурсы гр.">${item.price}</td>
+                            <td data-label="Время ч.">${item.time}</td>
+                            <td data-label="Работа гр./ч.">${item.worker}</td>
+                        </tr>
+                    `;
+        totalprice += item.price;
+        totaltime += item.time;
+        totalwork += item.time * item.worker;
+      });
+
+      tableHTML += `
+                        <tr class="total-row">
+                            <td data-label="Описание"><strong>Сумма:</strong></td>
+                            <td data-label="Ресурсы"><strong>${totalprice}</strong></td>
+                            <td data-label="Время"><strong>${totaltime}</strong></td>
+                            <td data-label="Труд"><strong>${totalwork}</strong></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                `;
+      container.innerHTML = tableHTML;
+      return { totalprice: totalprice, totaltime: totaltime, totalwork: totalwork }; // Возвращаем сумму для сводной таблицы
+    }
+
+    function createTableIncome(data, title, containerId, headingId) {
+      const container = document.getElementById(containerId);
+      const heading = document.getElementById(headingId);
+
+      if (heading) {
+        heading.textContent = title;
+      }
+
+      let tableHTML = `
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Описание</th>
+                                <th>Ресурсы гр.</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                `;
+      let totalprice = 0;
+      let totaltime = 0;
+      let totalwork = 0;
+
+      data.forEach((item) => {
+        tableHTML += `
+                        <tr>
+                            <td data-label="Описание">${item.description}</td>
+                            <td data-label="Ресурсы">${item.price}</td>
+                        </tr>
+                    `;
+        totalprice += item.price;
+        totaltime += item.time;
+        totalwork += item.time * item.worker;
+      });
+
+      tableHTML += `
+                        <tr class="total-row">
+                            <td data-label="Описание"><strong>Сумма:</strong></td>
+                            <td data-label="Ресурсы"><strong>${totalprice}</strong></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                `;
+      container.innerHTML = tableHTML;
+      return totalprice; // Возвращаем сумму для сводной таблицы
+    }
+
+    // Генерируем таблицы и получаем их суммы
+    const totalStart = createTable(
+      start,
+      "Стартовые инвестиции",
+      "start-table-container",
+      "start-heading"
+    );
+    const totalCost = createTable(
+      cost,
+      "Ежемесячные операционные расходы",
+      "cost-table-container",
+      "cost-heading"
+    );
+    const totalIncome = createTableIncome(
+      income,
+      "Прогнозируемые доходы",
+      "income-table-container",
+      "income-heading"
+    );
+
+    // Создаем данные для сводной таблицы
+    const summaryData = [
+      { description: "Стартовые инвестиции", price: totalStart.totalprice },
+      { description: "Время на развитие", price: totalStart.totaltime },
+      { description: "Трудовые затраты на развитие", price: totalStart.totalwork },
+      { description: "Общие затраты на развитие", price: totalStart.totalwork + totalStart.totalprice },
+      { description: " ", price: ' ' },
+
+      { description: "Ежемесячные операционные расходы", price: totalCost.totalprice },
+      { description: "Ежемесячное время", price: totalCost.totaltime },
+      { description: "Трудовые затраты ежемесячные", price: totalCost.totalwork },
+      { description: "Общие затраты на поддержание", price: totalCost.totalwork + totalCost.totalprice },
+      { description: " ", price: ' ' },
+
+
+      { description: "Прогнозируемые доходы", price: totalIncome },
+      {
+        description: "Рентабельность: Прибыль = Доходы - Расходы",
+        price: totalIncome - totalCost.totalprice,
+      },
+      {
+        description: "Рентабельность с учетом работы: Прибыль = Доходы - Расходы",
+        price: totalIncome - totalCost.totalprice - totalCost.totalwork,
+      },
+
+    ];
+
+    // Функция для создания сводной таблицы
+    function createSummaryTable(data, containerId) {
+      const container = document.getElementById(containerId);
+      let tableHTML = `
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Категория</th>
+                                <th>Сумма</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                `;
+
+      data.forEach((item) => {
+        tableHTML += `
+                        <tr>
+                            <td data-label="Категория">${item.description}</td>
+                            <td data-label="Сумма">${item.price}</td>
+                        </tr>
+                    `;
+      });
+
+      tableHTML += `
+                        </tbody>
+                    </table>
+                `;
+      container.innerHTML = tableHTML;
+    }
+
+    // Генерируем сводную таблицу
+    createSummaryTable(summaryData, "summary-table-container");
+  </script>
+</body>
+
+</html>

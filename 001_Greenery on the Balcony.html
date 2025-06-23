@@ -295,6 +295,19 @@
 
   <body>
     <script src="./001_data.js"></script>
+        <header>
+      <div class="container">
+        <h1>Бизнес-план: Выращивание Микрозелени на Балконе в Одессе</h1>
+        <nav>
+          <ul>
+            <li><a href="index.html">Оглавление</a></li>
+            <li><a href="./001_Greenery on the Balcony.html" class="active">Микрозелень</a></li>
+            <li><a href="./002_mushrooms.html">Грибы</a></li>
+            <li><a href="contact.html">Контакты</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
     <div class="container">
       <h1>Бизнес-план: Выращивание Зелени на Балконе</h1>
 
@@ -680,7 +693,11 @@
         </div>
       </div>
     </div>
-
+    <footer>
+      <div class="container">
+        <p>&copy; 2025 Мой Сайт. Все права защищены.</p>
+      </div>
+    </footer>
     <script>
       // Функция для переключения состояния контента (используется для верхней стрелки)
       function toggleContent(headerElement) {
@@ -727,95 +744,7 @@
       }
     </script>
     <script>
-    //   // Данные для таблиц
-    //   const countMicrogreens = 20;
-    //   const countParsley = 30;
-    //   const stack = {
-    //     h: 1.8,
-    //     w: 0.64,
-    //     l: 0.4,
-    //     floor: 5,
-    //     count: 1200,
-    //     sq: function () {
-    //       return this.w * this.l * this.floor;
-    //     },
-    //   };
-    //   const tray = {
-    //     h: 0.06,
-    //     w: 0.35,
-    //     l: 0.25,
-    //     count: 25,
-    //     sq: function () {
-    //       return this.w * this.l;
-    //     },
-    //   };
-    //   const start = [
-    //     {
-    //       description: "Стеллажи" + stack.sq(),
-    //       price: 2 * stack.count,
-    //       time: 4,
-    //       worker: 150,
-    //     },
-    //     {
-    //       description: "Лотки",
-    //       price: Math.round((tray.count * 2 * stack.sq()) / tray.sq()),
-    //       time: 1,
-    //       worker: 150,
-    //     },
-    //     {
-    //       description: "Почвосмесь/Субстрат",
-    //       price: 200,
-    //       time: 6,
-    //       worker: 150,
-    //     },
-    //     {
-    //       description: "Семена",
-    //       price: 20 * (countMicrogreens + countParsley),
-    //       time: 3,
-    //       worker: 150,
-    //     },
-    //     {
-    //       description: "Фитолампы (если нужны)",
-    //       price: 1000,
-    //       time: 3,
-    //       worker: 150,
-    //     },
-
-    //     { description: "Прочий инвентарь", price: 300, time: 1, worker: 150 },
-    //     {
-    //       description: "Упаковка",
-    //       price: 6 * (countMicrogreens + countParsley),
-    //       time: 6,
-    //       worker: 150,
-    //     },
-    //   ];
-
-    //   const cost = [
-    //     {
-    //       description: "Семена",
-    //       price: 20 * (countMicrogreens + countParsley),
-    //       time: 4,
-    //       worker: 150,
-    //     },
-    //     {
-    //       description: "Почвосмесь/Субстрат",
-    //       price: 200,
-    //       time: 2,
-    //       worker: 150,
-    //     },
-    //     {
-    //       description: "Упаковка",
-    //       price: 6 * (countMicrogreens + countParsley),
-    //       time: 8,
-    //       worker: 150,
-    //     },
-    //   ];
-
-    //   const income = [
-    //     { description: "Микрозелень", price: countMicrogreens * 4 * 40 },
-    //     { description: "Зелень", price: countParsley * 25 * 4 },
-    //   ];
-
+   
       // Функция для создания таблицы из массива данных
       function createTable(data, title, containerId, headingId) {
         const container = document.getElementById(containerId);
