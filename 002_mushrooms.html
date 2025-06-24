@@ -5,6 +5,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Сворачивающийся Текст с двумя кнопками</title>
+  <link rel="stylesheet" href="./styles.css">
+
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -295,20 +297,8 @@
 </head>
 
 <body>
-  <header>
-    <div class="container">
-      <h1>Бизнес-план: Выращивание Микрозелени на Балконе в Одессе</h1>
-      <nav>
-        <ul>
-          <li><a href="index.html">Оглавление</a></li>
-          <li><a href="page1.html" class="active">Микрозелень</a></li>
-          <li><a href="page2.html" class="active">Грибы</a></li>
-          <li><a href="contact.html">Контакты</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
-  <div class="container">
+
+  <main class="container">
     <h1>Бизнес-план: Выращивание Грибов на Балконе</h1>
 
     <div class="collapsible-section">
@@ -778,12 +768,8 @@
         </div>
       </div>
     </div>
-  </div>
-  <footer>
-    <div class="container">
-      <p>&copy; 2025 Мой Сайт. Все права защищены.</p>
-    </div>
-  </footer>
+  </main>
+
   <script>
     const stack = {
       h: 1.8,
@@ -1123,6 +1109,12 @@
 
     // Генерируем сводную таблицу
     createSummaryTable(summaryData, "summary-table-container");
+  </script>
+  
+  <script src="./footer.js"></script>
+  <script src="./header.js"></script>
+  <script>
+      loadHeader('./002_mushrooms.html'); 
   </script>
 </body>
 

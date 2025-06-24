@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Сворачивающийся Текст с двумя кнопками</title>
+    <link rel="stylesheet" href="./styles.css">
     <style>
       body {
         font-family: Arial, sans-serif;
@@ -294,21 +295,9 @@
   </head>
 
   <body>
-    <script src="./001_data.js"></script>
-        <header>
-      <div class="container">
-        <h1>Бизнес-план: Выращивание Микрозелени на Балконе в Одессе</h1>
-        <nav>
-          <ul>
-            <li><a href="index.html">Оглавление</a></li>
-            <li><a href="./001_Greenery on the Balcony.html" class="active">Микрозелень</a></li>
-            <li><a href="./002_mushrooms.html">Грибы</a></li>
-            <li><a href="contact.html">Контакты</a></li>
-          </ul>
-        </nav>
-      </div>
-    </header>
-    <div class="container">
+
+
+    <main class="container">
       <h1>Бизнес-план: Выращивание Зелени на Балконе</h1>
 
       <div class="collapsible-section">
@@ -692,12 +681,10 @@
           </div>
         </div>
       </div>
-    </div>
-    <footer>
-      <div class="container">
-        <p>&copy; 2025 Мой Сайт. Все права защищены.</p>
-      </div>
-    </footer>
+    </main>
+    <script src="./001_data.js"></script>
+
+  
     <script>
       // Функция для переключения состояния контента (используется для верхней стрелки)
       function toggleContent(headerElement) {
@@ -924,5 +911,11 @@
       // Генерируем сводную таблицу
       createSummaryTable(summaryData, "summary-table-container");
     </script>
+ 
+ <script src="./footer.js"></script>
+ <script src="./header.js"></script>
+ <script>
+     loadHeader('./001_Greenery on the Balcony.html'); 
+ </script>
   </body>
 </html>

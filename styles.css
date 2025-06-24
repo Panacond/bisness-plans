@@ -1,0 +1,260 @@
+/* Общие стили */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Header */
+header {
+    background-color: #4CAF50; /* Зеленый цвет */
+    color: white;
+    padding: 1rem 0;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+header h1 {
+    margin: 0;
+    text-align: center;
+    padding-bottom: 10px;
+}
+
+/* Navigation */
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex; /* Flexbox для горизонтального расположения */
+    justify-content: center; /* Центрирование элементов */
+    flex-wrap: wrap; /* Разрешить перенос на новую строку на маленьких экранах */
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 8px 15px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+nav ul li a:hover,
+nav ul li a.active {
+    background-color: #5cb85c; /* Более светлый зеленый при наведении */
+}
+
+/* Main content */
+.content {
+    background-color: white;
+    margin-top: 20px;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.content h2 {
+    color: #4CAF50;
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.topic-list {
+    display: grid; /* Используем Grid для адаптивного расположения карточек */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* 300px мин. ширина, 1fr - равномерное распределение */
+    gap: 25px; /* Промежуток между карточками */
+    margin-top: 30px;
+}
+
+.topic-card {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    display: flex; /* Flexbox для содержимого карточки */
+    flex-direction: column; /* Элементы в колонку */
+    justify-content: space-between; /* Распределение пространства */
+}
+
+.topic-card h3 {
+    color: #333;
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.topic-card h3 a {
+    text-decoration: none;
+    color: #333;
+    transition: color 0.3s ease;
+}
+
+.topic-card h3 a:hover {
+    color: #4CAF50;
+}
+
+.topic-card p {
+    font-size: 0.95em;
+    margin-bottom: 15px;
+    flex-grow: 1; /* Позволяет параграфу занимать доступное пространство */
+}
+
+.button {
+    display: inline-block;
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    align-self: flex-start; /* Прижать кнопку к левому краю */
+}
+
+.button:hover {
+    background-color: #45a049;
+}
+
+/* Footer */
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 1rem 0;
+    margin-top: 30px;
+}
+
+/* Адаптивный дизайн (Media Queries) */
+
+/* Для маленьких экранов (смартфоны до 768px) */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 1.8em;
+    }
+
+    nav ul {
+        flex-direction: column; /* Элементы меню располагаются вертикально */
+        align-items: center; /* Центрирование элементов меню */
+    }
+
+    nav ul li {
+        margin: 5px 0; /* Уменьшаем вертикальный отступ */
+    }
+
+    .topic-list {
+        grid-template-columns: 1fr; /* Одна колонка на маленьких экранах */
+    }
+
+    .content {
+        padding: 20px;
+    }
+}
+
+/* Для средних экранов (планшеты от 769px до 1024px) */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .container {
+        padding: 15px;
+    }
+
+    .topic-list {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Чуть меньшая мин. ширина */
+    }
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    margin-bottom: 30px;
+    font-size: 16px; /* Базовый размер текста в таблицах */
+  }
+
+  table th,
+  table td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+  }
+
+  table th {
+    background-color: #e2e6ea;
+    font-weight: bold;
+    color: #333;
+  }
+
+  table tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+
+  /* Стили для строк с суммой */
+  table tr.total-row td {
+    font-weight: bold;
+    background-color: #d1ecf1;
+  }
+
+  @media screen and (max-width: 768px) {
+
+    table {
+      font-size: 18px; /* Крупнее текст в таблицах */
+      display: block; /* Позволяет таблице вести себя как блочный элемент */
+      width: 100%;
+      overflow-x: auto; /* Добавляет горизонтальную прокрутку, если таблица слишком широкая */
+      -webkit-overflow-scrolling: touch; /* Улучшает прокрутку на iOS */
+    }
+
+    /* Для улучшения читаемости таблиц на мобильных:
+           скрываем заголовки столбцов и отображаем их как метки для каждой ячейки */
+    table thead {
+      display: none;
+    }
+    table,
+    tbody,
+    th,
+    td,
+    tr {
+      display: block;
+    }
+    table tr {
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      padding: 10px;
+      border-radius: 5px;
+    }
+    table td {
+      border: none;
+      border-bottom: 1px solid #eee;
+      position: relative;
+      padding-left: 50%; /* Место для метки */
+      text-align: right;
+    }
+    table td:before {
+      position: absolute;
+      left: 6px;
+      content: attr(data-label); /* Использует атрибут data-label из HTML */
+      font-weight: bold;
+      text-align: left;
+      width: 45%; /* Ширина для метки */
+    }
+    table td:last-child {
+      border-bottom: 0;
+    }
+    table tr.total-row td {
+      text-align: right; /* Суммы выравниваем по правому краю */
+      padding-left: 6px; /* Убираем отступ для метки для строк суммы */
+    }
+    table tr.total-row td:before {
+      content: ""; /* Скрываем метку для строки с суммой */
+    }
+  }
