@@ -5,9 +5,10 @@ function loadHeader(currentPage) {
                 <h1>Добро пожаловать на horns and hooves!</h1>
                 <nav>
                     <ul>
-                        <li><a href="index.html">Оглавление</a></li>
+                        <li><a href="./index.html">Оглавление</a></li>
                         <li><a href="./001_Greenery on the Balcony.html">Зелень</a></li>
                         <li><a href="./002_mushrooms.html">Грибы</a></li>
+                        <li><a href="./003_microgreens.html">Зелень2</a></li>
                         <li><a href="contact.html">Контакты</a></li>
                     </ul>
                 </nav>

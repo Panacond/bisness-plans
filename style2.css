@@ -1,0 +1,213 @@
+      h1 {
+        font-size: 32px;
+        color: #2c3e50;
+        margin-bottom: 20px;
+      }
+
+      h2 {
+        font-size: 28px;
+        color: #2c3e50;
+        margin-top: 30px;
+        margin-bottom: 15px;
+      }
+
+      h3 {
+        font-size: 24px;
+        color: #2c3e50;
+        margin-top: 25px;
+        margin-bottom: 10px;
+      }
+
+      p {
+        margin-bottom: 15px;
+      }
+
+      ul,
+      ol {
+        margin-bottom: 15px;
+        padding-left: 20px;
+      }
+
+      li {
+        margin-bottom: 5px;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+        margin-bottom: 30px;
+        font-size: 16px;
+      }
+
+      table th,
+      table td {
+        border: 1px solid #ddd;
+        padding: 10px;
+        text-align: left;
+      }
+
+      table th {
+        background-color: #e2e6ea;
+        font-weight: bold;
+        color: #333;
+      }
+
+      table tbody tr:nth-child(even) {
+        background-color: #f9f9f9;
+      }
+
+      table tr.total-row td {
+        font-weight: bold;
+        background-color: #d1ecf1;
+      }
+
+      @media screen and (max-width: 768px) {
+        body {
+          font-size: 18px;
+        }
+
+        .container {
+          margin: 10px;
+          padding: 20px;
+        }
+
+
+        table {
+          font-size: 18px;
+          display: block;
+          width: 100%;
+          overflow-x: auto;
+          -webkit-overflow-scrolling: touch;
+        }
+
+        table thead {
+          display: none;
+        }
+
+        table,
+        tbody,
+        th,
+        td,
+        tr {
+          display: block;
+        }
+
+        table tr {
+          margin-bottom: 15px;
+          border: 1px solid #ccc;
+          padding: 10px;
+          border-radius: 5px;
+        }
+
+        table td {
+          border: none;
+          border-bottom: 1px solid #eee;
+          position: relative;
+          padding-left: 50%;
+          text-align: right;
+        }
+
+        table td:before {
+          position: absolute;
+          left: 6px;
+          content: attr(data-label);
+          font-weight: bold;
+          text-align: left;
+          width: 45%;
+        }
+
+        table td:last-child {
+          border-bottom: 0;
+        }
+
+        table tr.total-row td {
+          text-align: right;
+          padding-left: 6px;
+        }
+
+        table tr.total-row td:before {
+          content: "";
+        }
+      }
+
+      .collapsible-section {
+        margin-bottom: 25px;
+      }
+
+      .collapsible-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #e2e6ea;
+        padding: 10px 15px;
+        border-radius: 5px;
+        cursor: pointer;
+        font-weight: bold;
+        color: #2c3e50;
+        margin-bottom: 0;
+      }
+
+      .collapsible-header:hover {
+        background-color: #d1ecf1;
+      }
+
+      .collapsible-header-text {
+        flex-grow: 1;
+      }
+
+      .collapsible-arrow-button {
+        background: none;
+        border: none;
+        font-size: 20px;
+        cursor: pointer;
+        color: #2c3e50;
+        padding: 0;
+        margin-left: 10px;
+        line-height: 1;
+      }
+
+      .collapsible-content {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease-out, padding-top 0.3s ease-out;
+        padding: 0 15px;
+        background-color: #f9f9f9;
+        border-bottom-left-radius: 5px;
+        border-bottom-right-radius: 5px;
+        border: 1px solid #e2e6ea;
+        border-top: none;
+      }
+
+      .collapsible-content.expanded {
+        max-height: 10000px;
+        transition: max-height 0.5s ease-in, padding-top 0.5s ease-in;
+        padding-top: 15px;
+        padding-bottom: 15px;
+      }
+
+      .collapsible-content p {
+        margin-top: 0;
+        margin-bottom: 10px;
+      }
+
+      .bottom-collapse-button {
+        text-align: center;
+        margin-top: 15px;
+        display: none;
+      }
+
+      .bottom-collapse-button button {
+        background-color: #dc3545;
+        color: white;
+        border: none;
+        padding: 8px 15px;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 14px;
+        transition: background-color 0.2s;
+      }
+
+      .bottom-collapse-button button:hover {
+        background-color: #c82333;
+      }
