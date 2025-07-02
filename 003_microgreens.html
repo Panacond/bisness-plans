@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Сворачивающийся Текст с двумя кнопками</title>
+  <title>Зелень 2</title>
   <link rel="stylesheet" href="./styles.css">
   <link rel="stylesheet" href="./style2.css">
 </head>
@@ -464,28 +464,59 @@
       get volume() { return Math.round(this.h * this.w * this.l * this.count * 100) / 100 },
 
     };
-    const mushroomBlock = {
-      price: 100,
-      weight: 8,
-      harvest: 2.5,
-      height: 0.7,
-      diametr: 0.3,
-      get volume() { return this.diametr ** 2 * this.height },
-      get count() { return Math.round(stack.volume / this.volume) },
-      timeDay: 20,
-      cost: 100 / 0.4,
-      get incomePerMount() {
-        return this.cost * this.count * this.harvest * this.timeDay / 30
+    const tray = {
+      h: 0.06,
+      w: 0.35,
+      l: 0.25,
+      price: 25,
+      get sq() {
+        return this.w * this.l;
+      },
+      get count() {
+        return Math.round((stack.count * stack.sq / this.sq));
+      },
+      get volume() {
+        return this.count * this.h * this.w * this.l
       }
     };
+    const substrate = {
+      price: 65,
+      get volume() { return 0.1 ** 3 * 10 },
+      get count() {
+        return Math.round(tray.volume / this.volume)
+      },
+    };
+    const radish = {
+      price: 20 / 250,
+      time_day: 20,
+      harvest_count_m2: 400,
+      harvest_kg: 4,
+      get count() { return Math.round(stack.sq / 2 * this.harvest_count_m2) },
+      get cost() { return Math.round(70 * this.harvest_kg * stack.sq / 2*100)/100 },
+    }
+    console.log("radish.count" + radish.count)
+    const broccoli = {
+      get cost() { return 70 * this.harvest_kg * stack.sq / 2 },
+      price: 40 / 20,
+      time_day: 70,
+      harvest_count_m2: 25,
+      harvest_kg: 25,
+      get count() { return Math.round(stack.sq / 2 * this.harvest_count_m2) }
+    }
+
+    const LedLamp = {
+      price: 300,
+      electisity: 65 * 6,
+      get count() { return stack.floor * stack.count }
+    }
     const package = {
       price: 349 / 100,
       volume: 0.25,
-      get count() { return mushroomBlock.count * mushroomBlock.harvest / this.volume }
+      get count() { return tray.sq / 2 * radish.harvest_count_m2 + tray.sq / 2 * broccoli.harvest_count_m2 }
     };
     const humidifier = {
-      price: 1200,
-      electisity: 30,
+      price: 100,
+      electisity: 0,
       vater: 4
     }
     const start = [
@@ -497,24 +528,24 @@
       },
       {
         description: "Лотки для проращивания",
-        price: 0,
-        time: 2,
+        price: Math.round(tray.count * tray.price * 100) / 100,
+        time: 1,
         worker: 150,
       },
       {
         description: "Субстрат",
-        price: 1500,
-        time: 0.2,
+        price: substrate.price * substrate.count,
+        time: Math.round(substrate.count * 1 / 6 * 10) / 10,
         worker: 150,
       },
       {
-        description: "Семена редис", price: 140,
-        time: 0.5,
+        description: "Семена редис", price: Math.round(tray.sq / 2 * radish.harvest_count_m2 * radish.price * 100) / 100,
+        time: Math.round(tray.sq * radish.harvest_count_m2 * 1 / 60 / 6 * 10) * 10,
         worker: 150,
       },
       {
-        description: "Семена брокколи", price: 140,
-        time: 0.5,
+        description: "Семена брокколи", price: Math.round(tray.sq / 2 * broccoli.harvest_count_m2 * broccoli.price * 100) / 100,
+        time: Math.round(tray.sq * broccoli.harvest_count_m2 * 1 / 60 / 2 * 10) * 10,
         worker: 150,
       },
       {
@@ -523,7 +554,7 @@
         worker: 150,
       },
       {
-        description: "Опрыскиватель", price: 100,
+        description: "Опрыскиватель", price: humidifier.price,
         time: 0,
         worker: 150,
       },
@@ -545,23 +576,27 @@
       },
       {
         description: "Электричество",
-        price: Math.round(5 / 1000 * 2 * 4 * mushroomBlock.timeDay * humidifier.electisity),
-        time: 1,
+        price: Math.round(5 / 1000 * 2 * 4 * LedLamp.count * LedLamp.electisity),
+        time: 0,
         worker: 150,
       },
       {
         description: "Вода",
-        price: Math.round(35 / 1000 * 2 * 4 * mushroomBlock.timeDay * humidifier.vater),
-        time: 0,
+        price: Math.round(35 / 1000 * (radish.time_day * radish.count * 1 / 10 + broccoli.time_day * broccoli.count * 1 / 4)),
+        time: radish.time_day * 1 + broccoli.time_day * 1,
         worker: 150,
       },
     ];
 
     const cost = [
       {
-        description: "Грибные блоки (готовые " + mushroomBlock.count + " шт)",
-        price: mushroomBlock.count * mushroomBlock.price,
-        time: 2,
+        description: "Семена редис", price: Math.round(tray.sq / 2 * radish.harvest_count_m2 * radish.price * 10) / 10,
+        time: Math.round(tray.sq * radish.harvest_count_m2 * 1 / 60 / 6 * 10) * 10,
+        worker: 150,
+      },
+      {
+        description: "Семена брокколи", price: tray.sq / 2 * broccoli.harvest_count_m2 * broccoli.price,
+        time: Math.round(tray.sq * broccoli.harvest_count_m2 * 1 / 60 / 2 * 10) * 10,
         worker: 150,
       },
       {
@@ -572,20 +607,27 @@
       },
       {
         description: "Электричество",
-        price: Math.round(5 / 1000 * 2 * 4 * mushroomBlock.timeDay * humidifier.electisity),
-        time: 1,
+        price: Math.round(5 / 1000 * 2 * 4 * LedLamp.count * LedLamp.electisity),
+        time: 0,
         worker: 150,
       },
       {
         description: "Вода",
-        price: Math.round(35 / 1000 * 2 * 4 * mushroomBlock.timeDay * humidifier.vater),
-        time: 0,
+        price: Math.round(35 / 1000 * (radish.time_day * radish.count * 1 / 10 + broccoli.time_day * broccoli.count * 1 / 4)),
+        time: radish.time_day * 1 + broccoli.time_day * 1,
         worker: 150,
       },
     ];
 
     const income = [
-      { description: "Один грибной блок весом 5-10 кг субстрата может дать 1.5-3 кг грибов за несколько волн", price: mushroomBlock.incomePerMount },
+      {
+        description: "Редиска",
+        price: radish.cost
+      },
+      {
+        description: "Брокколи",
+        price: broccoli.cost
+      },
     ];
   </script>
   <script src="./generate_table.js"></script>

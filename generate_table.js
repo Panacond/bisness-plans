@@ -82,7 +82,7 @@ function toggleContent(headerElement) {
     tableHTML += `
                       <tr class="total-row">
                           <td data-label="Описание"><strong>Сумма:</strong></td>
-                          <td data-label="Ресурсы"><strong>${totalprice}</strong></td>
+                          <td data-label="Ресурсы"><strong>${Math.round(totalprice*100)/100}</strong></td>
                           <td data-label="Время"><strong>${totaltime}</strong></td>
                           <td data-label="Труд"><strong>${totalwork}</strong></td>
                       </tr>
@@ -130,7 +130,7 @@ function toggleContent(headerElement) {
     tableHTML += `
                       <tr class="total-row">
                           <td data-label="Описание"><strong>Сумма:</strong></td>
-                          <td data-label="Ресурсы"><strong>${totalprice}</strong></td>
+                          <td data-label="Ресурсы"><strong>${Math.round(totalprice*100)/100}</strong></td>
                       </tr>
                       </tbody>
                   </table>
@@ -161,7 +161,7 @@ function toggleContent(headerElement) {
 
   // Создаем данные для сводной таблицы
   const summaryData = [
-    { description: "Стартовые инвестиции", price: totalStart.totalprice },
+    { description: "Стартовые инвестиции", price: Math.round(totalStart.totalprice*100)/100 },
     { description: "Время на развитие", price: totalStart.totaltime },
     { description: "Трудовые затраты на развитие", price: totalStart.totalwork },
     { description: "Общие затраты на развитие", price: totalStart.totalwork + totalStart.totalprice },
