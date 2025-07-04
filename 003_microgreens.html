@@ -492,11 +492,11 @@
       harvest_count_m2: 400,
       harvest_kg: 4,
       get count() { return Math.round(stack.sq / 2 * this.harvest_count_m2) },
-      get cost() { return Math.round(70 * this.harvest_kg * stack.sq / 2*100)/100 },
+      get cost() { return Math.round(70 * this.harvest_kg * stack.sq / 2*100/this.time_day*30)/100 },
     }
     console.log("radish.count" + radish.count)
     const broccoli = {
-      get cost() { return 200 * this.harvest_kg * stack.sq / 2 },
+      get cost() { return Math.round(200 * this.harvest_kg * stack.sq / 2/100/this.time_day*30)*100 },
       price: 40 / 20,
       time_day: 70,
       harvest_count_m2: 25,
