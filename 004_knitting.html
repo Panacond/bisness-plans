@@ -11,7 +11,7 @@
 
 <body>
     <main class="container">
-        <h1>Бизнес-план: Выращивание Микрозелени на Балконе 2</h1>
+        <h1>Бизнес-план: Вязание шапок, шарфов и снудов</h1>
         <div class="collapsible-section">
             <div class="collapsible-header" onclick="toggleContent(this)">
                 <span class="collapsible-header-text">Бизнес-план: Общее описание</span>
@@ -294,13 +294,12 @@
                         </li>
                         <li><b>Стартовые затраты (единовременные):</b>
                             <ul>
-                                <li>Покупка вязальной машины: $ $2000+</li>
+                                <li>Покупка вязальной машины</li>
                                 <li>Покупка сопутствующего оборудования (парогенератор, швейная машинка, ножницы,
-                                    инструменты): $100 - $300</li>
+                                    инструменты)</li>
                                 <li>Первоначальная закупка пряжи: $100 - $500 (зависит от объема и качества)</li>
-                                <li>Разработка логотипа, дизайн бирок: $50 - $200</li>
-                                <li>Регистрация ФОП: $0 (если самостоятельно) + госпошлина (если есть)</li>
-                                <li><b>ИТОГО стартовых затрат:</b> $750 - $3000+</li>
+                                <li>Разработка логотипа, дизайн бирок</li>
+                                <li>Регистрация ФОП</li>
                             </ul>
                         </li>
                         <li><b>Ежемесячные затраты (постоянные и переменные):</b>
@@ -308,23 +307,22 @@
                                 <li>Шапка Расход пряжи: Обычно от 70 до 120 грамм</li>
                                 <li>Шарф Расход пряжи: Обычно от 200 до 350 грамм</li>
                                 <li>Снуд Расход пряжи: Обычно от 100 до 200 грамм</li>
-                                <li>Закупка пряжи (переменная): $50 - $300+ (зависит от объемов продаж)</li>
-                                <li>Интернет: $10 - $20</li>
-                                <li>Мобильная связь: $5 - $10</li>
-                                <li>Реклама в соцсетях (таргет): $20 - $100+</li>
-                                <li>Налоги (Единый налог + ЕСВ): $100 - $200 (зависит от группы ФОП)</li>
-                                <li>Упаковка, бирки: $10 - $50</li>
-                                <li>Транспортные расходы (доставка, ярмарки): $10 - $50</li>
+                                <li>Закупка пряжи</li>
+                                <li>Интернет</li>
+                                <li>Мобильная связь</li>
+                                <li>Реклама в соцсетях</li>
+                                <li>Налоги (Единый налог + ЕСВ)</li>
+                                <li>Упаковка, бирки</li>
+                                <li>Транспортные расходы (доставка, ярмарки)</li>
                                 <li>Амортизация оборудования (учитывается, но не является прямым платежом): 10-20% от
                                     стоимости оборудования в год / 12 месяцев.</li>
-                                <li><b>ИТОГО ежемесячных затрат:</b> $205 - $730+</li>
                             </ul>
                         </li>
                         <li><b>Планируемые доходы:</b>
                             <ul>
-                                <li><b>Средняя цена шапки:</b> $15 - $30</li>
-                                <li><b>Средняя цена шарфа/снуда:</b> $20 - $40</li>
-                                <li><b>Средняя цена комплекта:</b> $30 - $60</li>
+                                <li>Средняя цена шапки</li>
+                                <li>Средняя цена шарфа/снуда</li>
+                                <li>Средняя цена комплекта</li>
                                 <li><b>Планируемый объем продаж:</b> (Рассчитывается исходя из производственной мощности
                                     и анализа рынка). Например, 30 шапок и 20 шарфов в месяц на старте.</li>
                                 <li><b>Расчет месячного дохода:</b> (Количество шапок * Цена шапки) + (Количество шарфов
@@ -414,6 +412,49 @@
     </main>
 
     <script>
+        const knitting_env = {
+            machine: {
+                description: "вазальная машина",
+                price: 2000 * 40
+            },
+            envirovment: {
+                description: "дополнительное оборудование",
+                price: 200 * 40
+            },
+            logo: {
+                description: "заказать логотип",
+                price: 50 * 40
+            },
+            internet: 10 * 40,
+            package: 0.5 * 40
+        }
+        const worker = {
+            days: 22,
+            hourly_wage: 200,
+        }
+        const yarn = {
+            cost: 40,
+            weight: 1 / 150,
+            lenghtMeter: 150
+        }
+        const cap = {
+            description: "вязанная шапка",
+            cost: 400,
+            weightKg: 1 / 120
+        }
+
+        const scarf = {
+            description: "вязанный шарф",
+            cost: 400,
+            weightKg: 1 / 350
+        }
+        const snood = {
+            description: "вязанный снуд",
+            cost: 200,
+            weightKg: 1 / 200
+        }
+
+
         const stack = {
             h: 1.8,
             w: 0.64,
@@ -484,113 +525,88 @@
         }
         const start = [
             {
-                description: "Стеллажи " + stack.count + "шт. (общая объем)" + stack.volume + "м.куб",
-                price: stack.count * stack.price,
-                time: 4,
-                worker: 150,
+                description: knitting_env.machine.description,
+                price: knitting_env.machine.price,
+                time: 8,
+                worker: worker.hourly_wage,
             },
             {
-                description: "Лотки для проращивания",
-                price: Math.round(tray.count * tray.price * 100) / 100,
+                description: knitting_env.envirovment.description,
+                price: knitting_env.envirovment.price,
                 time: 1,
-                worker: 150,
+                worker: worker.hourly_wage,
             },
             {
-                description: "Субстрат",
-                price: substrate.price * substrate.count,
+                description: knitting_env.logo.description,
+                price: knitting_env.logo.price,
                 time: Math.round(substrate.count * 1 / 6 * 10) / 10,
-                worker: 150,
+                worker: worker.hourly_wage,
             },
             {
-                description: "Семена редис", price: Math.round(tray.sq / 2 * radish.harvest_count_m2 * radish.price * 100) / 100,
-                time: Math.round(tray.sq * radish.harvest_count_m2 * 1 / 60 / 6 * 10) * 10,
-                worker: 150,
+                description: "интернет и мобильная связь", price: knitting_env.internet,
+                time: 1,
+                worker: worker.hourly_wage,
+            },
+
+            {
+                description: "закупка пряжи", 
+                price: Math.round(worker.days*3*(cap.weightKg + scarf.weightKg + snood.weightKg)/yarn.weight*yarn.cost*100)/100,
+                time: 2,
+                worker: worker.hourly_wage,
             },
             {
-                description: "Семена брокколи", price: Math.round(tray.sq / 2 * broccoli.harvest_count_m2 * broccoli.price * 100) / 100,
-                time: Math.round(tray.sq * broccoli.harvest_count_m2 * 1 / 60 / 2 * 10) * 10,
-                worker: 150,
+                description: "Вязание", 
+                price: 0,
+                time: Math.round(worker.days*3*1),
+                worker: worker.hourly_wage,
             },
             {
-                description: "Освещение (LED-фитолампы)", price: 140,
-                time: 0.5,
-                worker: 150,
-            },
-            {
-                description: "Опрыскиватель", price: humidifier.price,
-                time: 0,
-                worker: 150,
-            },
-            {
-                description: "Ножницы/острый нож", price: 100,
-                time: 0,
-                worker: 150,
-            },
-            {
-                description: "Весы кухонные: Для точного взвешивания порций.", price: 400,
-                time: 0,
-                worker: 150,
-            },
-            {
-                description: "Упаковка" + package.count + "шт",
-                price: Math.round(package.price * package.count),
-                time: 4,
-                worker: 150,
-            },
-            {
-                description: "Электричество",
-                price: Math.round(5 / 1000 * 2 * 4 * LedLamp.count * LedLamp.electisity),
-                time: 0,
-                worker: 150,
-            },
-            {
-                description: "Вода",
-                price: Math.round(35 / 1000 * (radish.time_day * radish.count * 1 / 10 + broccoli.time_day * broccoli.count * 1 / 4)),
-                time: radish.time_day * 1 + broccoli.time_day * 1,
-                worker: 150,
-            },
+                description: "Упаковка", price: humidifier.price,
+                time: Math.round(worker.days*3*1/10*10)/10,
+                worker: worker.hourly_wage,
+            }
         ];
 
         const cost = [
+        {
+                description: "интернет и мобильная связь", price: knitting_env.internet,
+                time: 1,
+                worker: worker.hourly_wage,
+            },
+
             {
-                description: "Семена редис", price: Math.round(tray.sq / 2 * radish.harvest_count_m2 * radish.price * 10) / 10,
-                time: Math.round(tray.sq * radish.harvest_count_m2 * 1 / 60 / 6 * 10) * 10,
-                worker: 150,
+                description: "закупка пряжи", 
+                price: Math.round(worker.days*3*(cap.weightKg + scarf.weightKg + snood.weightKg)/yarn.weight*yarn.cost*100)/100,
+                time: 2,
+                worker: worker.hourly_wage,
             },
             {
-                description: "Семена брокколи", price: tray.sq / 2 * broccoli.harvest_count_m2 * broccoli.price,
-                time: Math.round(tray.sq * broccoli.harvest_count_m2 * 1 / 60 / 2 * 10) * 10,
-                worker: 150,
+                description: "Вязание", 
+                price: 0,
+                time: Math.round(worker.days*3*1),
+                worker: worker.hourly_wage,
             },
             {
-                description: "Упаковка" + package.count + "шт",
-                price: Math.round(package.price * package.count),
-                time: 4,
-                worker: 150,
-            },
-            {
-                description: "Электричество",
-                price: Math.round(5 / 1000 * 2 * 4 * LedLamp.count * LedLamp.electisity),
-                time: 0,
-                worker: 150,
-            },
-            {
-                description: "Вода",
-                price: Math.round(35 / 1000 * (radish.time_day * radish.count * 1 / 10 + broccoli.time_day * broccoli.count * 1 / 4)),
-                time: radish.time_day * 1 + broccoli.time_day * 1,
-                worker: 150,
+                description: "Упаковка", price: humidifier.price,
+                time: Math.round(worker.days*3*1/10*10)/10,
+                worker: worker.hourly_wage,
             },
         ];
 
         const income = [
             {
-                description: "Редиска",
-                price: radish.cost
+                description: cap.description,
+                price: cap.cost*worker.days
             },
             {
-                description: "Брокколи",
-                price: broccoli.cost
+                description: scarf.description,
+                price: scarf.cost*worker.days
             },
+            {
+                description: snood.description,
+                price: snood.cost*worker.days
+            },
+
         ];
     </script>
     <script src="./generate_table.js"></script>
