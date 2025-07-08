@@ -181,7 +181,7 @@ function toggleContent(headerElement) {
     },
     {
       description: "Рентабельность с учетом работы: Прибыль = Доходы - Расходы",
-      price: totalIncome - totalCost.totalprice - totalCost.totalwork,
+      price: Math.round((totalIncome - totalCost.totalprice - totalCost.totalwork)*100)/100,
     },
 
   ];
